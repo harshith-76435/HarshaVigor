@@ -1,0 +1,2725 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>HarshaVigor | Login</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            color: #ffffff;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(255,90,31,.16),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(255,90,31,.10),
+                    transparent 25%
+                ),
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(255,90,31,.07),
+                    transparent 35%
+                ),
+                #05070a;
+
+            overflow-x: hidden;
+        }
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+
+            height: 500px;
+
+            top: -220px;
+
+            left: -180px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,90,31,.12),
+                    transparent 68%
+                );
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 600px;
+
+            height: 600px;
+
+            right: -280px;
+
+            bottom: -300px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,90,31,.10),
+                    transparent 68%
+                );
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        header {
+
+            min-height: 76px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 6%;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(13,16,21,.97),
+                    rgba(8,10,14,.93)
+                );
+
+            border-bottom:
+                1px solid rgba(255,255,255,.07);
+
+            box-shadow:
+                0 12px 40px rgba(0,0,0,.30);
+
+            backdrop-filter: blur(22px);
+
+            -webkit-backdrop-filter: blur(22px);
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+        /* =========================================================
+           HARSHAVIGOR LOGO
+           ONLY LOGO SECTION CHANGED
+        ========================================================= */
+
+        .logo {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            height: 60px;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+        }
+
+        .logo-image-box {
+
+            width: 58px;
+
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            overflow: visible;
+
+            position: relative;
+        }
+
+        .logo-image-box::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 52px;
+
+            height: 52px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(255,90,31,.07);
+
+            border:
+                1px solid rgba(255,90,31,.14);
+
+            box-shadow:
+                0 0 22px rgba(255,90,31,.08);
+
+            z-index: -1;
+        }
+
+        .logo img {
+
+            width: 58px;
+
+            height: 58px;
+
+            object-fit: contain;
+
+            display: block;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+        .logo-name {
+
+            display: flex;
+
+            align-items: baseline;
+
+            gap: 0;
+
+            white-space: nowrap;
+
+            font-size: 21px;
+
+            line-height: 1;
+
+            font-weight: 900;
+
+            letter-spacing: -0.9px;
+        }
+
+        .logo-name .harsha {
+
+            color: #ffffff;
+        }
+
+        .logo-name .vigor {
+
+            color: #ff5a1f;
+        }
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .login-page {
+
+            min-height: calc(100vh - 76px);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 55px 20px 70px;
+        }
+
+        .login-container {
+
+            width: 100%;
+
+            max-width: 1080px;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0,1fr)
+                minmax(370px,450px);
+
+            align-items: center;
+
+            gap: 75px;
+        }
+
+        /* =========================================================
+           LEFT SIDE
+        ========================================================= */
+
+        .entrance-content {
+
+            max-width: 520px;
+        }
+
+        .entrance-label {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 9px 14px;
+
+            margin-bottom: 22px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,90,31,.08);
+
+            border:
+                1px solid rgba(255,90,31,.25);
+
+            color: #ff7a3d;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.6px;
+        }
+
+        .entrance-label::before {
+
+            content: "";
+
+            width: 7px;
+
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #ff5a1f;
+
+            box-shadow:
+                0 0 12px rgba(255,90,31,.8);
+        }
+
+        .entrance-content h1 {
+
+            margin: 0;
+
+            font-size: clamp(48px,6vw,78px);
+
+            line-height: .96;
+
+            letter-spacing: -4px;
+
+            font-weight: 900;
+        }
+
+        .entrance-content h1 span {
+
+            display: block;
+
+            color: #ff5a1f;
+
+            text-shadow:
+                0 0 35px rgba(255,90,31,.18);
+        }
+
+        .entrance-description {
+
+            max-width: 490px;
+
+            margin: 25px 0 0;
+
+            color: #858e99;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+        .entrance-benefits {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,minmax(0,1fr));
+
+            gap: 11px;
+
+            margin-top: 30px;
+
+            max-width: 480px;
+        }
+
+        .benefit-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px 14px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            border:
+                1px solid rgba(255,255,255,.06);
+
+            color: #a3abb4;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                background .25s ease;
+        }
+
+        .benefit-item:hover {
+
+            transform: translateY(-2px);
+
+            background:
+                rgba(255,90,31,.055);
+
+            border-color:
+                rgba(255,90,31,.20);
+
+            color: #fff;
+        }
+
+        .benefit-icon {
+
+            width: 27px;
+
+            height: 27px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,90,31,.10);
+
+            color: #ff6b32;
+
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           LOGIN CARD
+        ========================================================= */
+
+        .login-card {
+
+            width: 100%;
+
+            padding: 34px;
+
+            position: relative;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(24,28,35,.95),
+                    rgba(11,14,19,.95)
+                );
+
+            border:
+                1px solid rgba(255,255,255,.08);
+
+            border-radius: 24px;
+
+            box-shadow:
+                0 35px 90px rgba(0,0,0,.55),
+                0 0 60px rgba(255,90,31,.055),
+                inset 0 1px 0 rgba(255,255,255,.05);
+
+            backdrop-filter: blur(24px);
+
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .login-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 12%;
+
+            right: 12%;
+
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,90,31,.65),
+                    transparent
+                );
+        }
+
+        /* =========================================================
+           HEADINGS
+        ========================================================= */
+
+        .login-heading {
+
+            text-align: center;
+
+            margin-bottom: 27px;
+        }
+
+        .login-heading p {
+
+            margin: 0 0 10px;
+
+            color: #ff6b32;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1.8px;
+        }
+
+        .login-heading h1 {
+
+            margin: 0 0 10px;
+
+            color: #fff;
+
+            font-size: 28px;
+
+            line-height: 1.15;
+
+            letter-spacing: -.8px;
+        }
+
+        .login-heading span {
+
+            color: #7f8994;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        /* =========================================================
+           FORM
+        ========================================================= */
+
+        .login-form {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+        .login-form label {
+
+            margin-bottom: 8px;
+
+            color: #c8cdd3;
+
+            font-size: 11px;
+
+            font-weight: 800;
+        }
+
+        .login-form input {
+
+            width: 100%;
+
+            padding: 15px;
+
+            margin-bottom: 18px;
+
+            background:
+                rgba(5,8,12,.72);
+
+            border:
+                1px solid rgba(255,255,255,.075);
+
+            border-radius: 11px;
+
+            color: #fff;
+
+            outline: none;
+
+            font-size: 13px;
+
+            transition:
+                border-color .25s ease,
+                box-shadow .25s ease,
+                background .25s ease;
+        }
+
+        .login-form input::placeholder {
+
+            color: #555e68;
+        }
+
+        .login-form input:focus {
+
+            border-color:
+                rgba(255,90,31,.65);
+
+            background:
+                rgba(255,90,31,.025);
+
+            box-shadow:
+                0 0 0 3px rgba(255,90,31,.07),
+                0 0 25px rgba(255,90,31,.05);
+        }
+
+        /* =========================================================
+           PASSWORD WRAPPER
+        ========================================================= */
+
+        .password-wrapper {
+
+            position: relative;
+
+            width: 100%;
+
+            margin-bottom: 18px;
+        }
+
+        .password-wrapper input {
+
+            width: 100%;
+
+            margin-bottom: 0 !important;
+
+            padding-right: 52px !important;
+        }
+
+        .password-wrapper.password-invalid input {
+
+            border-color:
+                #ff4d4d !important;
+
+            background:
+                rgba(255,77,77,.045) !important;
+
+            box-shadow:
+                0 0 0 3px rgba(255,77,77,.055),
+                0 0 22px rgba(255,77,77,.055) !important;
+        }
+
+        .password-wrapper.password-valid input {
+
+            border-color:
+                #25d366 !important;
+
+            background:
+                rgba(37,211,102,.045) !important;
+
+            box-shadow:
+                0 0 0 3px rgba(37,211,102,.07),
+                0 0 22px rgba(37,211,102,.08) !important;
+        }
+
+        /* =========================================================
+           EYE
+        ========================================================= */
+
+        .login-form .show-password {
+
+            position: absolute !important;
+
+            right: 9px !important;
+
+            top: 50% !important;
+
+            transform:
+                translateY(-50%) !important;
+
+            width: 36px !important;
+
+            height: 36px !important;
+
+            padding: 0 !important;
+
+            margin: 0 !important;
+
+            border: none !important;
+
+            border-radius: 8px !important;
+
+            background: transparent !important;
+
+            color: #707985;
+
+            font-size: 16px !important;
+
+            display: flex !important;
+
+            align-items: center;
+
+            justify-content: center;
+
+            cursor: pointer;
+
+            box-shadow: none !important;
+        }
+
+        .login-form .show-password:hover {
+
+            background:
+                rgba(255,90,31,.08) !important;
+
+            color: #ff6b32;
+        }
+
+        /* =========================================================
+           PASSWORD RULES
+        ========================================================= */
+
+        .password-rules {
+
+            margin-top: 2px;
+
+            margin-bottom: 19px;
+
+            padding: 17px;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.035),
+                    rgba(255,255,255,.018)
+                );
+
+            border:
+                1px solid rgba(255,255,255,.065);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.035);
+        }
+
+        .password-rules-title {
+
+            margin-bottom: 12px;
+
+            color: #aeb6bf;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: .4px;
+        }
+
+        .password-rule {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin: 8px 0;
+
+            color: #ff5656;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+        .rule-icon {
+
+            width: 18px;
+
+            height: 18px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,77,77,.12);
+
+            color: #ff5656;
+
+            font-size: 10px;
+
+            font-weight: 900;
+        }
+
+        .password-rule.valid {
+
+            color: #32d96b;
+        }
+
+        .password-rule.valid .rule-icon {
+
+            background:
+                rgba(37,211,102,.14);
+
+            color: #32d96b;
+        }
+
+        .password-status {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 13px;
+
+            padding-top: 12px;
+
+            border-top:
+                1px solid rgba(255,255,255,.055);
+
+            color: #ff5656;
+
+            font-size: 10px;
+
+            font-weight: 900;
+        }
+
+        .password-status.valid {
+
+            color: #32d96b;
+        }
+
+        .password-status-dot {
+
+            width: 8px;
+
+            height: 8px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: #ff4d4d;
+
+            box-shadow:
+                0 0 9px rgba(255,77,77,.60);
+        }
+
+        .password-status.valid .password-status-dot {
+
+            background: #25d366;
+
+            box-shadow:
+                0 0 9px rgba(37,211,102,.70);
+        }
+
+        /* =========================================================
+           CONFIRM STATUS
+        ========================================================= */
+
+        .confirm-status {
+
+            min-height: 17px;
+
+            margin: -9px 0 15px;
+
+            color: #ff5656;
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+        .confirm-status.valid {
+
+            color: #32d96b;
+        }
+
+        /* =========================================================
+           DISABLED BUTTON
+        ========================================================= */
+
+        .password-submit-disabled {
+
+            opacity: .38 !important;
+
+            cursor: not-allowed !important;
+
+            filter: grayscale(.20) !important;
+
+            box-shadow: none !important;
+        }
+
+        .password-submit-disabled:hover {
+
+            transform: none !important;
+
+            filter: grayscale(.20) !important;
+
+            box-shadow: none !important;
+        }
+
+        /* =========================================================
+           BUTTON
+        ========================================================= */
+
+        .login-form button:not(.show-password) {
+
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff6a32,
+                    #ff4d14
+                );
+
+            color: #fff;
+
+            font-size: 13px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px rgba(255,90,31,.20);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease,
+                filter .25s ease;
+        }
+
+        .login-form button:not(.show-password):hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 17px 38px rgba(255,90,31,.30);
+
+            filter: brightness(1.06);
+        }
+
+        /* =========================================================
+           FORGOT / SWITCH
+        ========================================================= */
+
+        .forgot-password {
+
+            margin: -3px 0 19px;
+
+            text-align: right;
+
+            color: #ff6b32;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+        .forgot-password:hover {
+
+            color: #ff9668;
+        }
+
+        .switch-button {
+
+            margin-top: 20px;
+
+            padding-top: 19px;
+
+            border-top:
+                1px solid rgba(255,255,255,.055);
+
+            text-align: center;
+
+            color: #6f7883;
+
+            font-size: 11px;
+
+            cursor: pointer;
+        }
+
+        .switch-button span {
+
+            color: #ff6b32;
+
+            font-weight: 800;
+        }
+
+        .switch-button:hover span {
+
+            color: #ff986c;
+        }
+
+        /* =========================================================
+           BOTTOM
+        ========================================================= */
+
+        .security-note {
+
+            margin: 27px 0 19px;
+
+            text-align: center;
+
+            color: #555f6a;
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+        .login-benefits {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 7px 13px;
+
+            margin: 0 0 20px;
+        }
+
+        .login-benefits span {
+
+            color: #7a838e;
+
+            font-size: 9px;
+
+            font-weight: 800;
+        }
+
+        .why-fittrack {
+
+            padding: 13px 15px;
+
+            background:
+                rgba(255,255,255,.025);
+
+            border:
+                1px solid rgba(255,255,255,.055);
+
+            border-radius: 11px;
+
+            text-align: center;
+        }
+
+        .why-fittrack strong {
+
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #b9c0c8;
+
+            font-size: 11px;
+        }
+
+        .why-fittrack span {
+
+            color: #59636e;
+
+            font-size: 9px;
+
+            line-height: 1.5;
+        }
+
+        #loginMessage {
+
+            min-height: 17px;
+
+            margin-top: 15px;
+
+            text-align: center;
+
+            color: #ff6b32;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+        .hidden {
+
+            display: none !important;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media screen and (max-width: 850px) {
+
+            .login-container {
+
+                grid-template-columns: 1fr;
+
+                gap: 40px;
+
+                max-width: 520px;
+            }
+
+            .entrance-content {
+
+                max-width: 100%;
+
+                text-align: center;
+            }
+
+            .entrance-description {
+
+                margin-left: auto;
+
+                margin-right: auto;
+            }
+
+            .entrance-benefits {
+
+                margin-left: auto;
+
+                margin-right: auto;
+
+                text-align: left;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+
+            header {
+
+                min-height: 68px;
+
+                padding: 0 17px;
+            }
+
+            .logo {
+
+                height: 50px;
+
+                gap: 9px;
+            }
+
+            .logo-image-box {
+
+                width: 45px;
+
+                height: 45px;
+            }
+
+            .logo-image-box::before {
+
+                width: 42px;
+
+                height: 42px;
+
+                border-radius: 11px;
+            }
+
+            .logo img {
+
+                width: 45px;
+
+                height: 45px;
+            }
+
+            .logo-name {
+
+                font-size: 18px;
+
+                letter-spacing: -.7px;
+            }
+
+            .login-page {
+
+                min-height: calc(100vh - 68px);
+
+                padding: 38px 15px 55px;
+            }
+
+            .login-container {
+
+                gap: 34px;
+            }
+
+            .entrance-content h1 {
+
+                font-size: 48px;
+
+                letter-spacing: -2.5px;
+            }
+
+            .entrance-description {
+
+                font-size: 13px;
+
+                line-height: 1.65;
+            }
+
+            .entrance-benefits {
+
+                grid-template-columns: 1fr;
+            }
+
+            .login-card {
+
+                padding: 27px 20px;
+
+                border-radius: 20px;
+            }
+
+            .login-heading h1 {
+
+                font-size: 25px;
+            }
+        }
+
+        @media screen and (max-width: 380px) {
+
+            .entrance-content h1 {
+
+                font-size: 42px;
+            }
+
+            .login-card {
+
+                padding: 24px 17px;
+            }
+
+            .logo-name {
+
+                font-size: 17px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <div class="logo-image-box">
+
+            <img
+                src="harshavigor-logo.png"
+                alt="HarshaVigor Logo"
+            >
+
+        </div>
+
+        <div class="logo-name">
+
+            <span class="harsha">Harsha</span><span class="vigor">Vigor</span>
+
+        </div>
+
+    </div>
+
+</header>
+
+<main class="login-page">
+
+    <div class="login-container">
+
+        <!-- =====================================================
+             LEFT SIDE
+        ===================================================== -->
+
+        <section class="entrance-content">
+
+            <div class="entrance-label">
+
+                YOUR FITNESS JOURNEY STARTS HERE
+
+            </div>
+
+            <h1>
+
+                Build Your
+
+                <span>
+
+                    Stronger Self.
+
+                </span>
+
+            </h1>
+
+            <p class="entrance-description">
+
+                Train smarter, track your progress, manage your nutrition,
+
+                and stay consistent with HarshaVigor — your personal
+
+                fitness companion.
+
+            </p>
+
+            <div class="entrance-benefits">
+
+                <div class="benefit-item">
+
+                    <div class="benefit-icon">
+
+                        💪
+
+                    </div>
+
+                    <span>
+
+                        Personalized Workouts
+
+                    </span>
+
+                </div>
+
+                <div class="benefit-item">
+
+                    <div class="benefit-icon">
+
+                        🍽️
+
+                    </div>
+
+                    <span>
+
+                        Smart Nutrition
+
+                    </span>
+
+                </div>
+
+                <div class="benefit-item">
+
+                    <div class="benefit-icon">
+
+                        📈
+
+                    </div>
+
+                    <span>
+
+                        Progress Tracking
+
+                    </span>
+
+                </div>
+
+                <div class="benefit-item">
+
+                    <div class="benefit-icon">
+
+                        🔥
+
+                    </div>
+
+                    <span>
+
+                        Stay Consistent
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================================
+             LOGIN CARD
+        ===================================================== -->
+
+        <div class="login-card">
+
+            <!-- =====================================================
+                 LOGIN PAGE
+            ===================================================== -->
+
+            <div id="existingUserSection">
+
+                <div class="login-heading">
+
+                    <p>
+
+                        WELCOME TO HARSHAVIGOR
+
+                    </p>
+
+                    <h1>
+
+                        Welcome Back
+
+                    </h1>
+
+                    <span>
+
+                        Sign in to continue your fitness journey.
+
+                    </span>
+
+                </div>
+
+                <div class="login-form">
+
+                    <label for="loginUsername">
+
+                        Username
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="loginUsername"
+                        placeholder="Enter your username"
+                        autocomplete="username"
+                    >
+
+                    <label for="loginPassword">
+
+                        Password
+
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="showLoginPassword"
+                            aria-label="Show or hide password"
+                        >
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="forgot-password"
+                        id="forgotPasswordButton"
+                        onclick="window.location.href='otp.html'"
+                    >
+
+                        Forgot Password?
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="loginButton"
+                    >
+
+                        Continue →
+
+                    </button>
+
+                </div>
+
+                <div
+                    class="switch-button"
+                    id="showRegister"
+                >
+
+                    New to HarshaVigor?
+
+                    <span>
+
+                        Create an account
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- =====================================================
+                 CREATE ACCOUNT — USERNAME + MOBILE
+            ===================================================== -->
+
+            <div
+                id="registerDetailsSection"
+                class="hidden"
+            >
+
+                <div class="login-heading">
+
+                    <p>
+
+                        JOIN HARSHAVIGOR
+
+                    </p>
+
+                    <h1>
+
+                        Create Your Account
+
+                    </h1>
+
+                    <span>
+
+                        Start tracking your workouts, nutrition and progress.
+
+                    </span>
+
+                </div>
+
+                <div class="login-form">
+
+                    <label for="registerUsername">
+
+                        Username
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="registerUsername"
+                        placeholder="Choose your username"
+                        autocomplete="username"
+                    >
+
+                    <label for="registerMobile">
+
+                        Mobile Number
+
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="registerMobile"
+                        placeholder="Enter 10-digit mobile number"
+                        maxlength="10"
+                        inputmode="numeric"
+                        autocomplete="tel"
+                    >
+
+                    <button
+                        type="button"
+                        id="detailsContinueButton"
+                    >
+
+                        Continue →
+
+                    </button>
+
+                </div>
+
+                <div
+                    class="switch-button"
+                    id="detailsBackToLogin"
+                >
+
+                    Already have an account?
+
+                    <span>
+
+                        Login
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- =====================================================
+                 CREATE PASSWORD
+            ===================================================== -->
+
+            <div
+                id="createPasswordSection"
+                class="hidden"
+            >
+
+                <div class="login-heading">
+
+                    <p>
+
+                        SECURE YOUR ACCOUNT
+
+                    </p>
+
+                    <h1>
+
+                        Create Your Password
+
+                    </h1>
+
+                    <span>
+
+                        Protect your account and keep your fitness journey secure.
+
+                    </span>
+
+                </div>
+
+                <div class="login-form">
+
+                    <label for="registerPassword">
+
+                        Create Password
+
+                    </label>
+
+                    <div
+                        class="password-wrapper password-invalid"
+                        id="registerPasswordWrapper"
+                    >
+
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Create a strong password"
+                            autocomplete="new-password"
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="showRegisterPassword"
+                            aria-label="Show or hide password"
+                        >
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                    <div class="password-rules">
+
+                        <div class="password-rules-title">
+
+                            Password requirements
+
+                        </div>
+
+                        <div
+                            class="password-rule"
+                            id="ruleLength"
+                        >
+
+                            <span class="rule-icon">
+
+                                ×
+
+                            </span>
+
+                            <span>
+
+                                At least 8 characters
+
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="password-rule"
+                            id="ruleUppercase"
+                        >
+
+                            <span class="rule-icon">
+
+                                ×
+
+                            </span>
+
+                            <span>
+
+                                At least one uppercase letter
+
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="password-rule"
+                            id="ruleLowercase"
+                        >
+
+                            <span class="rule-icon">
+
+                                ×
+
+                            </span>
+
+                            <span>
+
+                                At least one lowercase letter
+
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="password-rule"
+                            id="ruleNumber"
+                        >
+
+                            <span class="rule-icon">
+
+                                ×
+
+                            </span>
+
+                            <span>
+
+                                At least one number
+
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="password-rule"
+                            id="ruleSpecial"
+                        >
+
+                            <span class="rule-icon">
+
+                                ×
+
+                            </span>
+
+                            <span>
+
+                                At least one special character
+
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="password-status"
+                            id="passwordStatus"
+                        >
+
+                            <span class="password-status-dot"></span>
+
+                            <span id="passwordStatusText">
+
+                                Password is not complete
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <label for="registerConfirmPassword">
+
+                        Confirm Password
+
+                    </label>
+
+                    <div
+                        class="password-wrapper password-invalid"
+                        id="registerConfirmPasswordWrapper"
+                    >
+
+                        <input
+                            type="password"
+                            id="registerConfirmPassword"
+                            placeholder="Confirm your password"
+                            autocomplete="new-password"
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="showRegisterConfirmPassword"
+                            aria-label="Show or hide password"
+                        >
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="confirm-status"
+                        id="confirmStatus"
+                    ></div>
+
+                    <button
+                        type="button"
+                        id="createAccountButton"
+                        class="password-submit-disabled"
+                        disabled
+                    >
+
+                        Create Account →
+
+                    </button>
+
+                </div>
+
+                <div
+                    class="switch-button"
+                    id="passwordBackButton"
+                >
+
+                    Want to change your details?
+
+                    <span>
+
+                        Back
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- =====================================================
+                 BOTTOM INFORMATION
+            ===================================================== -->
+
+            <p class="security-note">
+
+                🔒 Your fitness data stays private and secure.
+
+            </p>
+
+            <div class="login-benefits">
+
+                <span>
+
+                    ✓ Workout Plans
+
+                </span>
+
+                <span>
+
+                    ✓ Nutrition Tracking
+
+                </span>
+
+                <span>
+
+                    ✓ Progress Tracking
+
+                </span>
+
+            </div>
+
+            <div class="why-fittrack">
+
+                <strong>
+
+                    Why HarshaVigor?
+
+                </strong>
+
+                <span>
+
+                    One place to plan, track, and improve your fitness.
+
+                </span>
+
+            </div>
+
+            <p id="loginMessage"></p>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script>
+
+    /* =========================================================
+       PAGE ELEMENTS
+    ========================================================= */
+
+    var existingUserSection =
+        document.getElementById(
+            "existingUserSection"
+        );
+
+    var registerDetailsSection =
+        document.getElementById(
+            "registerDetailsSection"
+        );
+
+    var createPasswordSection =
+        document.getElementById(
+            "createPasswordSection"
+        );
+
+    var loginMessage =
+        document.getElementById(
+            "loginMessage"
+        );
+
+    /* =========================================================
+       NAVIGATION BUTTONS
+    ========================================================= */
+
+    var showRegister =
+        document.getElementById(
+            "showRegister"
+        );
+
+    var showLogin =
+        document.getElementById(
+            "detailsBackToLogin"
+        );
+
+    var passwordBackButton =
+        document.getElementById(
+            "passwordBackButton"
+        );
+
+    /* =========================================================
+       CREATE ACCOUNT DETAILS
+    ========================================================= */
+
+    var registerUsername =
+        document.getElementById(
+            "registerUsername"
+        );
+
+    var registerMobile =
+        document.getElementById(
+            "registerMobile"
+        );
+
+    var detailsContinueButton =
+        document.getElementById(
+            "detailsContinueButton"
+        );
+
+    /* =========================================================
+       PASSWORD ELEMENTS
+    ========================================================= */
+
+    var registerPassword =
+        document.getElementById(
+            "registerPassword"
+        );
+
+    var registerConfirmPassword =
+        document.getElementById(
+            "registerConfirmPassword"
+        );
+
+    var registerPasswordWrapper =
+        document.getElementById(
+            "registerPasswordWrapper"
+        );
+
+    var registerConfirmPasswordWrapper =
+        document.getElementById(
+            "registerConfirmPasswordWrapper"
+        );
+
+    var createAccountButton =
+        document.getElementById(
+            "createAccountButton"
+        );
+
+    var confirmStatus =
+        document.getElementById(
+            "confirmStatus"
+        );
+
+    var passwordStatus =
+        document.getElementById(
+            "passwordStatus"
+        );
+
+    var passwordStatusText =
+        document.getElementById(
+            "passwordStatusText"
+        );
+
+    /* =========================================================
+       PAGE SWITCH
+    ========================================================= */
+
+    function showOnly(section) {
+
+        existingUserSection.classList.add(
+            "hidden"
+        );
+
+        registerDetailsSection.classList.add(
+            "hidden"
+        );
+
+        createPasswordSection.classList.add(
+            "hidden"
+        );
+
+        section.classList.remove(
+            "hidden"
+        );
+
+        loginMessage.textContent = "";
+    }
+
+    /* =========================================================
+       OPEN CREATE ACCOUNT
+    ========================================================= */
+
+    showRegister.onclick =
+        function() {
+
+            showOnly(
+                registerDetailsSection
+            );
+
+            registerUsername.focus();
+
+        };
+
+    /* =========================================================
+       BACK TO LOGIN
+    ========================================================= */
+
+    showLogin.onclick =
+        function() {
+
+            showOnly(
+                existingUserSection
+            );
+
+        };
+
+    /* =========================================================
+       MOBILE INPUT
+    ========================================================= */
+
+    registerMobile.addEventListener(
+        "input",
+        function() {
+
+            this.value =
+                this.value
+                    .replace(/\D/g, "")
+                    .slice(0, 10);
+
+        }
+    );
+
+    /* =========================================================
+       CONTINUE FROM USERNAME + MOBILE
+    ========================================================= */
+
+    detailsContinueButton.onclick =
+        function() {
+
+            var username =
+                registerUsername.value.trim();
+
+            var mobile =
+                registerMobile.value.trim();
+
+            if (username === "") {
+
+                loginMessage.textContent =
+                    "Please enter a username.";
+
+                registerUsername.focus();
+
+                return;
+            }
+
+            if (!/^\d{10}$/.test(mobile)) {
+
+                loginMessage.textContent =
+                    "Please enter a valid 10-digit mobile number.";
+
+                registerMobile.focus();
+
+                return;
+            }
+
+            sessionStorage.setItem(
+                "fittrackPendingUsername",
+                username
+            );
+
+            sessionStorage.setItem(
+                "fittrackPendingMobile",
+                mobile
+            );
+
+            showOnly(
+                createPasswordSection
+            );
+
+            registerPassword.focus();
+
+        };
+
+    /* =========================================================
+       PASSWORD STATE
+    ========================================================= */
+
+    function getPasswordState() {
+
+        var password =
+            registerPassword.value;
+
+        return {
+
+            length:
+                password.length >= 8,
+
+            uppercase:
+                /[A-Z]/.test(password),
+
+            lowercase:
+                /[a-z]/.test(password),
+
+            number:
+                /[0-9]/.test(password),
+
+            special:
+                /[^A-Za-z0-9]/.test(password)
+
+        };
+    }
+
+    /* =========================================================
+       PASSWORD VALID
+    ========================================================= */
+
+    function isPasswordValid() {
+
+        var state =
+            getPasswordState();
+
+        return (
+
+            state.length &&
+
+            state.uppercase &&
+
+            state.lowercase &&
+
+            state.number &&
+
+            state.special
+
+        );
+    }
+
+    /* =========================================================
+       UPDATE PASSWORD RULE
+    ========================================================= */
+
+    function updateRule(id, valid) {
+
+        var rule =
+            document.getElementById(id);
+
+        var icon =
+            rule.querySelector(
+                ".rule-icon"
+            );
+
+        if (valid) {
+
+            rule.classList.add(
+                "valid"
+            );
+
+            icon.textContent =
+                "✓";
+
+        } else {
+
+            rule.classList.remove(
+                "valid"
+            );
+
+            icon.textContent =
+                "×";
+        }
+    }
+
+    /* =========================================================
+       UPDATE PASSWORD UI
+    ========================================================= */
+
+    function updatePasswordRules() {
+
+        var state =
+            getPasswordState();
+
+        updateRule(
+            "ruleLength",
+            state.length
+        );
+
+        updateRule(
+            "ruleUppercase",
+            state.uppercase
+        );
+
+        updateRule(
+            "ruleLowercase",
+            state.lowercase
+        );
+
+        updateRule(
+            "ruleNumber",
+            state.number
+        );
+
+        updateRule(
+            "ruleSpecial",
+            state.special
+        );
+
+        var valid =
+            isPasswordValid();
+
+        if (valid) {
+
+            registerPasswordWrapper.classList.remove(
+                "password-invalid"
+            );
+
+            registerPasswordWrapper.classList.add(
+                "password-valid"
+            );
+
+            passwordStatus.classList.add(
+                "valid"
+            );
+
+            passwordStatusText.textContent =
+                "Password is strong and complete";
+
+        } else {
+
+            registerPasswordWrapper.classList.remove(
+                "password-valid"
+            );
+
+            registerPasswordWrapper.classList.add(
+                "password-invalid"
+            );
+
+            passwordStatus.classList.remove(
+                "valid"
+            );
+
+            passwordStatusText.textContent =
+                "Password is not complete";
+        }
+
+        updateConfirmPassword();
+
+        updateCreateButton();
+    }
+
+    /* =========================================================
+       CONFIRM PASSWORD
+    ========================================================= */
+
+    function updateConfirmPassword() {
+
+        var password =
+            registerPassword.value;
+
+        var confirmPassword =
+            registerConfirmPassword.value;
+
+        if (confirmPassword === "") {
+
+            confirmStatus.textContent =
+                "";
+
+            confirmStatus.classList.remove(
+                "valid"
+            );
+
+            registerConfirmPasswordWrapper.classList.remove(
+                "password-valid"
+            );
+
+            registerConfirmPasswordWrapper.classList.add(
+                "password-invalid"
+            );
+
+            return;
+        }
+
+        if (
+            password !== "" &&
+            password === confirmPassword
+        ) {
+
+            confirmStatus.textContent =
+                "✓ Passwords match";
+
+            confirmStatus.classList.add(
+                "valid"
+            );
+
+            registerConfirmPasswordWrapper.classList.remove(
+                "password-invalid"
+            );
+
+            registerConfirmPasswordWrapper.classList.add(
+                "password-valid"
+            );
+
+        } else {
+
+            confirmStatus.textContent =
+                "Passwords do not match";
+
+            confirmStatus.classList.remove(
+                "valid"
+            );
+
+            registerConfirmPasswordWrapper.classList.remove(
+                "password-valid"
+            );
+
+            registerConfirmPasswordWrapper.classList.add(
+                "password-invalid"
+            );
+        }
+    }
+
+    /* =========================================================
+       CREATE ACCOUNT BUTTON STATE
+    ========================================================= */
+
+    function updateCreateButton() {
+
+        var passwordValid =
+            isPasswordValid();
+
+        var passwordsMatch =
+            registerPassword.value !== "" &&
+            registerPassword.value ===
+            registerConfirmPassword.value;
+
+        if (
+            passwordValid &&
+            passwordsMatch
+        ) {
+
+            createAccountButton.disabled =
+                false;
+
+            createAccountButton.classList.remove(
+                "password-submit-disabled"
+            );
+
+        } else {
+
+            createAccountButton.disabled =
+                true;
+
+            createAccountButton.classList.add(
+                "password-submit-disabled"
+            );
+        }
+    }
+
+    /* =========================================================
+       PASSWORD INPUT
+    ========================================================= */
+
+    registerPassword.addEventListener(
+        "input",
+        function() {
+
+            updatePasswordRules();
+
+        }
+    );
+
+    registerConfirmPassword.addEventListener(
+        "input",
+        function() {
+
+            updateConfirmPassword();
+
+            updateCreateButton();
+
+        }
+    );
+
+    /* =========================================================
+       BACK FROM PASSWORD PAGE
+    ========================================================= */
+
+    passwordBackButton.onclick =
+        function() {
+
+            showOnly(
+                registerDetailsSection
+            );
+
+            registerPassword.value =
+                "";
+
+            registerConfirmPassword.value =
+                "";
+
+            updatePasswordRules();
+
+        };
+
+    /* =========================================================
+       PASSWORD VISIBILITY
+    ========================================================= */
+
+    document.getElementById(
+        "showLoginPassword"
+    ).onclick =
+        function() {
+
+            var input =
+                document.getElementById(
+                    "loginPassword"
+                );
+
+            input.type =
+                input.type === "password"
+                    ? "text"
+                    : "password";
+
+        };
+
+    document.getElementById(
+        "showRegisterPassword"
+    ).onclick =
+        function() {
+
+            var input =
+                document.getElementById(
+                    "registerPassword"
+                );
+
+            input.type =
+                input.type === "password"
+                    ? "text"
+                    : "password";
+
+        };
+
+    document.getElementById(
+        "showRegisterConfirmPassword"
+    ).onclick =
+        function() {
+
+            var input =
+                document.getElementById(
+                    "registerConfirmPassword"
+                );
+
+            input.type =
+                input.type === "password"
+                    ? "text"
+                    : "password";
+
+        };
+
+    /* =========================================================
+       FINAL CREATE ACCOUNT
+    ========================================================= */
+
+    createAccountButton.onclick =
+        function() {
+
+            var username =
+                sessionStorage.getItem(
+                    "fittrackPendingUsername"
+                );
+
+            var mobile =
+                sessionStorage.getItem(
+                    "fittrackPendingMobile"
+                );
+
+            var password =
+                registerPassword.value;
+
+            var confirmPassword =
+                registerConfirmPassword.value;
+
+            if (!username || !mobile) {
+
+                loginMessage.textContent =
+                    "Account details are missing. Please go back.";
+
+                return;
+            }
+
+            if (!isPasswordValid()) {
+
+                loginMessage.textContent =
+                    "Please complete all password requirements.";
+
+                return;
+            }
+
+            if (
+                password !==
+                confirmPassword
+            ) {
+
+                loginMessage.textContent =
+                    "Passwords do not match.";
+
+                return;
+            }
+
+            /* CREATE ACCOUNT */
+
+            localStorage.setItem(
+                "fittrackAccountUsername",
+                username
+            );
+
+            localStorage.setItem(
+                "fittrackAccountMobile",
+                mobile
+            );
+
+            localStorage.setItem(
+                "fittrackPassword",
+                password
+            );
+
+            localStorage.setItem(
+                "fittrackUsername",
+                username
+            );
+
+            localStorage.setItem(
+                "fittrackMobile",
+                mobile
+            );
+
+            localStorage.setItem(
+                "fittrackDisplayName",
+                username
+            );
+
+            localStorage.setItem(
+                "fittrackLoginType",
+                "new"
+            );
+
+            localStorage.setItem(
+                "fittrackLoggedIn",
+                "true"
+            );
+
+            /* REMOVE TEMPORARY DATA */
+
+            sessionStorage.removeItem(
+                "fittrackPendingUsername"
+            );
+
+            sessionStorage.removeItem(
+                "fittrackPendingMobile"
+            );
+
+            loginMessage.textContent =
+                "✓ Account created successfully. Opening HarshaVigor...";
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "home.html";
+
+                },
+                700
+            );
+
+        };
+
+    /* =========================================================
+       EXISTING USER LOGIN
+    ========================================================= */
+
+    document.getElementById(
+        "loginButton"
+    ).onclick =
+        function() {
+
+            var username =
+                document.getElementById(
+                    "loginUsername"
+                ).value.trim();
+
+            var password =
+                document.getElementById(
+                    "loginPassword"
+                ).value;
+
+            var savedUsername =
+                localStorage.getItem(
+                    "fittrackAccountUsername"
+                );
+
+            var savedPassword =
+                localStorage.getItem(
+                    "fittrackPassword"
+                );
+
+            if (
+                savedUsername === null ||
+                savedPassword === null
+            ) {
+
+                loginMessage.textContent =
+                    "No account found. Please create an account first.";
+
+                return;
+            }
+
+            if (
+                username !== savedUsername
+            ) {
+
+                loginMessage.textContent =
+                    "Incorrect username.";
+
+                return;
+            }
+
+            if (
+                password !== savedPassword
+            ) {
+
+                loginMessage.textContent =
+                    "Incorrect password.";
+
+                return;
+            }
+
+            localStorage.setItem(
+                "fittrackUsername",
+                username
+            );
+
+            localStorage.setItem(
+                "fittrackDisplayName",
+                username
+            );
+
+            localStorage.setItem(
+                "fittrackLoginType",
+                "existing"
+            );
+
+            localStorage.setItem(
+                "fittrackLoggedIn",
+                "true"
+            );
+
+            window.location.href =
+                "home.html";
+
+        };
+
+    /* =========================================================
+       INITIAL STATE
+    ========================================================= */
+
+    updatePasswordRules();
+
+</script>
+
+</body>
+
+</html>

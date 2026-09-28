@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HarshaVigor - Workouts</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================================================
+           FITTRACK WORKOUTS
+           GOALS PAGE VISUAL REFERENCE
+           ========================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 15% 10%,
+                    rgba(255, 90, 31, 0.10),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(255, 90, 31, 0.06),
+                    transparent 25%
+                ),
+                #07090c;
+
+            color: #ffffff;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        /* =========================================================
+           PREMIUM NAVIGATION
+           ========================================================= */
+
+        header,
+        .navbar {
+            position: relative;
+            z-index: 1000;
+
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 38px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(13, 16, 21, 0.96),
+                    rgba(8, 10, 14, 0.92)
+                );
+
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+
+            box-shadow:
+                0 12px 40px rgba(0,0,0,0.28);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        header .logo,
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            color: #ffffff;
+
+            font-size: 19px;
+            font-weight: 850;
+            letter-spacing: -0.5px;
+
+            white-space: nowrap;
+
+            text-shadow:
+                0 0 22px rgba(255,90,31,0.18);
+        }
+
+        .nav-links {
+            margin-left: auto;
+
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 6px;
+
+            border: 1px solid rgba(255,255,255,0.055);
+            border-radius: 15px;
+
+            background: rgba(255,255,255,0.025);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.035);
+        }
+
+        .nav-links a {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            min-height: 38px;
+
+            padding: 0 13px;
+            margin: 0;
+
+            border-radius: 10px;
+
+            color: #858c96;
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            transition:
+                color 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+
+            background: rgba(255,255,255,0.055);
+
+            transform: translateY(-1px);
+        }
+
+        .nav-links a.active {
+            color: #ffffff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,90,31,0.19),
+                    rgba(255,90,31,0.06)
+                );
+
+            border: 1px solid rgba(255,90,31,0.20);
+
+            box-shadow:
+                0 0 22px rgba(255,90,31,0.08),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+        }
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+            bottom: -7px;
+
+            width: 18px;
+            height: 3px;
+
+            transform: translateX(-50%);
+
+            border-radius: 999px;
+
+            background: #ff5a1f;
+
+            box-shadow:
+                0 0 10px rgba(255,90,31,0.7);
+        }
+
+        .mobile-menu-button {
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 44px;
+            height: 44px;
+
+            margin-left: auto;
+
+            background: rgba(255,255,255,0.035);
+
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 12px;
+
+            color: #ffffff;
+
+            font-size: 21px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .mobile-menu-button:hover {
+            background: rgba(255,90,31,0.10);
+
+            border-color: rgba(255,90,31,0.35);
+
+            transform: translateY(-1px);
+        }
+
+        /* =========================================================
+           PAGE
+           ========================================================= */
+
+        .workouts-page {
+            position: relative;
+
+            min-height: calc(100vh - 76px);
+
+            padding: 70px 24px 90px;
+
+            overflow: hidden;
+        }
+
+        .workouts-page::before {
+            content: "";
+
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            border-radius: 50%;
+
+            background: rgba(255,90,31,0.075);
+
+            filter: blur(110px);
+
+            top: 100px;
+            left: -200px;
+
+            pointer-events: none;
+        }
+
+        .workouts-page::after {
+            content: "";
+
+            position: absolute;
+
+            width: 380px;
+            height: 380px;
+
+            border-radius: 50%;
+
+            background: rgba(255,120,45,0.055);
+
+            filter: blur(110px);
+
+            right: -180px;
+            bottom: 100px;
+
+            pointer-events: none;
+        }
+
+        .workouts-container {
+            position: relative;
+
+            width: min(1180px, 100%);
+
+            margin: auto;
+
+            z-index: 2;
+        }
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .workouts-hero {
+            display: grid;
+
+            grid-template-columns: 1fr auto;
+
+            align-items: end;
+
+            gap: 40px;
+
+            margin-bottom: 48px;
+        }
+
+        .hero-content {
+            max-width: 760px;
+        }
+
+        .hero-label {
+            display: inline-flex;
+
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 11px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid rgba(255,90,31,0.24);
+
+            border-radius: 999px;
+
+            background: rgba(255,90,31,0.07);
+
+            color: #ff6a2a;
+
+            font-size: 10px;
+            font-weight: 850;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+        }
+
+        .hero-label::before {
+            content: "";
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: #ff5a1f;
+
+            box-shadow:
+                0 0 10px rgba(255,90,31,0.8);
+        }
+
+        .workouts-hero h1 {
+            margin: 0;
+
+            font-size: clamp(42px, 6vw, 72px);
+
+            line-height: 0.98;
+
+            letter-spacing: -3px;
+
+            font-weight: 850;
+        }
+
+        .workouts-hero h1 span {
+            color: #ff6a2a;
+
+            text-shadow:
+                0 0 28px rgba(255,90,31,0.16);
+        }
+
+        .workouts-hero p {
+            max-width: 680px;
+
+            margin: 18px 0 0;
+
+            color: #858c96;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+        }
+
+        .hero-status {
+            min-width: 205px;
+
+            padding: 20px;
+
+            border: 1px solid rgba(255,255,255,0.075);
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(22,25,31,0.92),
+                    rgba(9,11,15,0.82)
+                );
+
+            box-shadow:
+                0 18px 50px rgba(0,0,0,0.24),
+                inset 0 1px 0 rgba(255,255,255,0.045);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .hero-status-label {
+            margin-bottom: 8px;
+
+            color: #686f78;
+
+            font-size: 9px;
+            font-weight: 800;
+
+            letter-spacing: 1.3px;
+
+            text-transform: uppercase;
+        }
+
+        .hero-status-value {
+            color: #ffffff;
+
+            font-size: 21px;
+            font-weight: 850;
+
+            letter-spacing: -0.5px;
+        }
+
+        .hero-status-line {
+            width: 100%;
+            height: 1px;
+
+            margin: 15px 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255,90,31,0.6),
+                    transparent
+                );
+        }
+
+        .hero-status-bottom {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #8c939d;
+
+            font-size: 11px;
+            font-weight: 650;
+        }
+
+        .hero-status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: #ff5a1f;
+
+            box-shadow:
+                0 0 10px rgba(255,90,31,0.65);
+        }
+
+        /* =========================================================
+           SUMMARY
+           ========================================================= */
+
+        .summary-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 55px;
+        }
+
+        .summary-card {
+            position: relative;
+
+            min-height: 125px;
+
+            padding: 22px;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(255,255,255,0.075);
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(22,25,31,0.88),
+                    rgba(8,10,14,0.78)
+                );
+
+            box-shadow:
+                0 20px 55px rgba(0,0,0,0.20),
+                inset 0 1px 0 rgba(255,255,255,0.035);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .summary-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255,90,31,0.8),
+                    transparent
+                );
+
+            opacity: 0.65;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(255,90,31,0.22);
+
+            box-shadow:
+                0 25px 60px rgba(0,0,0,0.28),
+                0 0 30px rgba(255,90,31,0.055);
+        }
+
+        .summary-label {
+            color: #686f78;
+
+            font-size: 10px;
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
+        }
+
+        .summary-value {
+            margin-top: 9px;
+
+            color: #ffffff;
+
+            font-size: 24px;
+            font-weight: 850;
+
+            letter-spacing: -0.7px;
+        }
+
+        .summary-value span {
+            color: #ff6a2a;
+        }
+
+        /* =========================================================
+           SECTION HEADING
+           ========================================================= */
+
+        .section-heading {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: end;
+
+            gap: 20px;
+
+            margin-bottom: 20px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: 20px;
+
+            letter-spacing: -0.4px;
+        }
+
+        .section-heading p {
+            margin: 5px 0 0;
+
+            color: #707781;
+
+            font-size: 13px;
+        }
+
+        .section-counter {
+            color: #666d76;
+
+            font-size: 11px;
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            white-space: nowrap;
+        }
+
+        /* =========================================================
+           WEEKLY SCHEDULE
+           ========================================================= */
+
+        .schedule-container {
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+        /* =========================================================
+           WORKOUT CARD
+           ========================================================= */
+
+        .schedule-card {
+            position: relative;
+
+            padding: 23px;
+
+            border: 1px solid rgba(255,255,255,0.075);
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(20,23,29,0.90),
+                    rgba(8,10,14,0.84)
+                );
+
+            box-shadow:
+                0 20px 55px rgba(0,0,0,0.22),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            overflow: hidden;
+
+            transition:
+                transform 0.28s ease,
+                border-color 0.28s ease,
+                box-shadow 0.28s ease;
+        }
+
+        .schedule-card::before {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255,90,31,0.8),
+                    rgba(255,90,31,0.05),
+                    transparent
+                );
+
+            opacity: 0.7;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-6px);
+
+            border-color: rgba(255,90,31,0.22);
+
+            box-shadow:
+                0 28px 65px rgba(0,0,0,0.32),
+                0 0 30px rgba(255,90,31,0.06);
+        }
+
+        .schedule-top {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+        .day-pill {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 29px;
+
+            padding: 0 11px;
+
+            border: 1px solid rgba(255,90,31,0.18);
+
+            border-radius: 999px;
+
+            background: rgba(255,90,31,0.065);
+
+            color: #ff6a2a;
+
+            font-size: 9px;
+            font-weight: 850;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+        .workout-icon {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 48px;
+            height: 48px;
+
+            border: 1px solid rgba(255,255,255,0.075);
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.065),
+                    rgba(255,255,255,0.025)
+                );
+
+            font-size: 22px;
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.04);
+        }
+
+        .workout-card-title {
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: 21px;
+            font-weight: 850;
+
+            letter-spacing: -0.5px;
+        }
+
+        .workout-card-subtitle {
+            margin: 7px 0 19px;
+
+            color: #707781;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           EXERCISES
+           ========================================================= */
+
+        .exercise-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+            margin-bottom: 18px;
+        }
+
+        .exercise-row {
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            min-height: 52px;
+
+            padding: 9px 12px;
+
+            border: 1px solid rgba(255,255,255,0.045);
+
+            border-radius: 13px;
+
+            background: rgba(255,255,255,0.025);
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .exercise-row:hover {
+            background: rgba(255,90,31,0.045);
+
+            border-color: rgba(255,90,31,0.12);
+        }
+
+        .exercise-name {
+            min-width: 0;
+
+            color: #d8dbe0;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            line-height: 1.35;
+        }
+
+        .exercise-meta {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+
+            flex-shrink: 0;
+        }
+
+        .exercise-meta span {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            min-height: 25px;
+
+            padding: 0 8px;
+
+            border-radius: 8px;
+
+            background: rgba(255,255,255,0.035);
+
+            color: #8a919b;
+
+            font-size: 9px;
+            font-weight: 750;
+
+            white-space: nowrap;
+        }
+
+        .exercise-meta span:first-child {
+            color: #ff6a2a;
+
+            background: rgba(255,90,31,0.065);
+
+            border: 1px solid rgba(255,90,31,0.10);
+        }
+
+        /* =========================================================
+           START BUTTON
+           ========================================================= */
+
+        .start-workout-button {
+            width: 100%;
+
+            min-height: 50px;
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff6a2a,
+                    #ff4d16
+                );
+
+            color: #ffffff;
+
+            font-size: 12px;
+            font-weight: 850;
+
+            letter-spacing: 0.1px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px rgba(255,90,31,0.18),
+                inset 0 1px 0 rgba(255,255,255,0.18);
+
+            transition:
+                transform 0.22s ease,
+                box-shadow 0.22s ease,
+                filter 0.22s ease;
+        }
+
+        .start-workout-button:hover {
+            transform: translateY(-2px);
+
+            filter: brightness(1.05);
+
+            box-shadow:
+                0 17px 35px rgba(255,90,31,0.28),
+                inset 0 1px 0 rgba(255,255,255,0.20);
+        }
+
+        .start-workout-button:active {
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           REST CARD
+           ========================================================= */
+
+        .rest-card {
+            min-height: 225px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 28px;
+
+            border: 1px solid rgba(255,255,255,0.065);
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18,21,27,0.82),
+                    rgba(8,10,14,0.76)
+                );
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.20),
+                inset 0 1px 0 rgba(255,255,255,0.035);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .rest-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(255,255,255,0.11);
+        }
+
+        .rest-icon {
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 62px;
+            height: 62px;
+
+            margin-bottom: 16px;
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.055),
+                    rgba(255,255,255,0.018)
+                );
+
+            font-size: 27px;
+        }
+
+        .rest-card h3 {
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: 19px;
+            font-weight: 850;
+        }
+
+        .rest-card p {
+            max-width: 300px;
+
+            margin: 8px 0 0;
+
+            color: #707781;
+
+            font-size: 12px;
+
+            line-height: 1.65;
+        }
+
+        /* =========================================================
+           BOTTOM NOTE
+           ========================================================= */
+
+        .workout-note {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-top: 24px;
+
+            padding: 17px 19px;
+
+            border: 1px solid rgba(255,255,255,0.055);
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.035),
+                    rgba(255,255,255,0.018)
+                );
+
+            color: #727984;
+
+            font-size: 11px;
+
+            line-height: 1.55;
+        }
+
+        .workout-note-icon {
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 31px;
+            height: 31px;
+
+            border-radius: 10px;
+
+            background: rgba(255,90,31,0.08);
+
+            border: 1px solid rgba(255,90,31,0.14);
+
+            color: #ff6a2a;
+
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           TABLET
+           ========================================================= */
+
+        @media screen and (max-width: 1000px) {
+
+            .workouts-hero {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .hero-status {
+                width: 100%;
+                max-width: 360px;
+            }
+
+            .summary-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .schedule-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =========================================================
+           MOBILE
+           ========================================================= */
+
+        @media screen and (max-width: 768px) {
+
+            header,
+            .navbar {
+                min-height: 68px;
+
+                padding: 0 16px;
+            }
+
+            header .logo,
+            .navbar .logo {
+                font-size: 17px;
+            }
+
+            .mobile-menu-button {
+                display: flex !important;
+            }
+
+            .nav-links {
+                display: none !important;
+
+                position: absolute;
+
+                top: calc(100% + 8px);
+
+                left: 12px;
+                right: 12px;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                gap: 5px;
+
+                padding: 10px;
+                margin: 0;
+
+                border: 1px solid rgba(255,255,255,0.08);
+
+                border-radius: 18px;
+
+                background:
+                    linear-gradient(
+                        145deg,
+                        rgba(16,19,25,0.98),
+                        rgba(8,10,14,0.98)
+                    );
+
+                box-shadow:
+                    0 25px 70px rgba(0,0,0,0.55),
+                    inset 0 1px 0 rgba(255,255,255,0.04);
+
+                backdrop-filter: blur(25px);
+                -webkit-backdrop-filter: blur(25px);
+
+                z-index: 10000;
+            }
+
+            .nav-links.mobile-open {
+                display: flex !important;
+            }
+
+            .nav-links a {
+                width: auto;
+
+                min-height: 46px;
+
+                padding: 0 15px;
+
+                border-radius: 11px;
+
+                font-size: 13px;
+            }
+
+            .nav-links a:hover {
+                transform: none;
+            }
+
+            .nav-links a.active {
+                background:
+                    linear-gradient(
+                        135deg,
+                        rgba(255,90,31,0.18),
+                        rgba(255,90,31,0.055)
+                    );
+            }
+
+            .nav-links a.active::after {
+                left: auto;
+
+                right: 13px;
+
+                bottom: 50%;
+
+                width: 4px;
+                height: 18px;
+
+                transform: translateY(50%);
+            }
+
+            .workouts-page {
+                min-height: calc(100vh - 68px);
+
+                padding:
+                    48px 16px
+                    65px;
+            }
+
+            .workouts-page::before {
+                width: 280px;
+                height: 280px;
+
+                left: -160px;
+            }
+
+            .workouts-page::after {
+                width: 260px;
+                height: 260px;
+
+                right: -150px;
+            }
+
+            .workouts-hero {
+                margin-bottom: 35px;
+            }
+
+            .workouts-hero h1 {
+                font-size: clamp(40px, 12vw, 58px);
+
+                letter-spacing: -2.5px;
+            }
+
+            .workouts-hero p {
+                font-size: 13px;
+
+                line-height: 1.7;
+            }
+
+            .hero-status {
+                max-width: none;
+
+                padding: 18px;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+
+                gap: 12px;
+
+                margin-bottom: 45px;
+            }
+
+            .summary-card {
+                min-height: 100px;
+
+                padding: 18px;
+            }
+
+            .summary-value {
+                font-size: 22px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 7px;
+
+                margin-bottom: 16px;
+            }
+
+            .section-counter {
+                font-size: 9px;
+            }
+
+            .schedule-container {
+                grid-template-columns: 1fr;
+
+                gap: 14px;
+            }
+
+            .schedule-card {
+                padding: 18px;
+
+                border-radius: 21px;
+            }
+
+            .workout-card-title {
+                font-size: 19px;
+            }
+
+            .exercise-row {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 8px;
+
+                padding: 11px;
+            }
+
+            .exercise-meta {
+                width: 100%;
+
+                justify-content: flex-start;
+
+                flex-wrap: wrap;
+            }
+
+            .start-workout-button {
+                min-height: 48px;
+            }
+
+            .rest-card {
+                min-height: 200px;
+
+                padding: 22px;
+            }
+
+            .workout-note {
+                align-items: flex-start;
+
+                padding: 15px;
+            }
+        }
+
+        /* =========================================================
+           SMALL MOBILE
+           ========================================================= */
+
+        @media screen and (max-width: 420px) {
+
+            .workouts-page {
+                padding-left: 13px;
+                padding-right: 13px;
+            }
+
+            .workouts-hero h1 {
+                font-size: 40px;
+
+                letter-spacing: -2px;
+            }
+
+            .hero-label {
+                font-size: 9px;
+            }
+
+            .workouts-hero p {
+                font-size: 12px;
+            }
+
+            .schedule-card {
+                padding: 16px;
+
+                border-radius: 19px;
+            }
+
+            .workout-icon {
+                width: 43px;
+                height: 43px;
+
+                border-radius: 13px;
+
+                font-size: 20px;
+            }
+
+            .day-pill {
+                font-size: 8px;
+            }
+
+            .workout-card-title {
+                font-size: 18px;
+            }
+
+            .exercise-name {
+                font-size: 11px;
+            }
+
+            .exercise-meta span {
+                font-size: 8px;
+            }
+
+            .rest-card h3 {
+                font-size: 18px;
+            }
+        }
+
+        /* =========================================================
+           ACCESSIBILITY
+           ========================================================= */
+
+        :focus-visible {
+            outline: 2px solid rgba(255,90,31,0.75);
+
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+    <img src="harshavigor-logo.png" alt="HarshaVigor">
+</div>
+
+    <nav class="nav-links" id="mainNav">
+
+        <a href="home.html">
+            Home
+        </a>
+
+        <a href="index.html">
+            Dashboard
+        </a>
+
+        <a href="goals.html">
+            Goals
+        </a>
+
+        <a href="workouts.html" class="active">
+            Workouts
+        </a>
+
+        <a href="nutrition.html">
+            Nutrition
+        </a>
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+        <a href="progress.html">
+            Progress
+        </a>
+
+    </nav>
+
+    <button
+        type="button"
+        class="mobile-menu-button"
+        id="mobileMenuButton"
+        aria-label="Open navigation"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+</header>
+
+
+<main class="workouts-page">
+
+    <div class="workouts-container">
+
+        <!-- =====================================================
+             HERO
+             ===================================================== -->
+
+        <section class="workouts-hero">
+
+            <div class="hero-content">
+
+                <div class="hero-label">
+                    PERSONALIZED TRAINING
+                </div>
+
+                <h1>
+                    Your <span>Workout Plan.</span>
+                </h1>
+
+                <p id="workoutSubtitle">
+                    A structured training plan built around your goal,
+                    experience level, and available training days.
+                </p>
+
+            </div>
+
+
+            <div class="hero-status">
+
+                <div class="hero-status-label">
+                    Plan Status
+                </div>
+
+                <div class="hero-status-value">
+                    Personalized
+                </div>
+
+                <div class="hero-status-line"></div>
+
+                <div class="hero-status-bottom">
+
+                    <span class="hero-status-dot"></span>
+
+                    Ready to train
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PLAN SUMMARY
+             ===================================================== -->
+
+        <section class="summary-grid">
+
+            <div class="summary-card">
+
+                <div class="summary-label">
+                    Fitness Goal
+                </div>
+
+                <div
+                    class="summary-value"
+                    id="goalDisplay"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-label">
+                    Experience Level
+                </div>
+
+                <div
+                    class="summary-value"
+                    id="levelDisplay"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-label">
+                    Training Days
+                </div>
+
+                <div
+                    class="summary-value"
+                    id="daysDisplay"
+                >
+                    —
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             WEEKLY PLAN
+             ===================================================== -->
+
+        <section>
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Your Weekly Plan
+                    </h2>
+
+                    <p>
+                        Follow the schedule and complete each session at your own pace.
+                    </p>
+
+                </div>
+
+                <div
+                    class="section-counter"
+                    id="scheduleCounter"
+                >
+                    7 DAY SCHEDULE
+                </div>
+
+            </div>
+
+
+            <div
+                class="schedule-container"
+                id="scheduleContainer"
+            >
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             TRAINING NOTE
+             ===================================================== -->
+
+        <div class="workout-note">
+
+            <div class="workout-note-icon">
+                ✦
+            </div>
+
+            <div>
+                Follow the recommended sets, reps, and rest periods.
+                Focus on controlled form and gradually increase your
+                training performance over time.
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       MOBILE NAVIGATION
+       ========================================================= */
+
+    const mobileMenuButton =
+        document.getElementById("mobileMenuButton");
+
+    const mainNav =
+        document.getElementById("mainNav");
+
+
+    if (mobileMenuButton && mainNav) {
+
+        mobileMenuButton.addEventListener("click", function () {
+
+            const isOpen =
+                mainNav.classList.toggle("mobile-open");
+
+            mobileMenuButton.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+            mobileMenuButton.textContent =
+                isOpen ? "✕" : "☰";
+
+        });
+
+
+        mainNav.querySelectorAll("a").forEach(function (link) {
+
+            link.addEventListener("click", function () {
+
+                mainNav.classList.remove("mobile-open");
+
+                mobileMenuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                mobileMenuButton.textContent = "☰";
+
+            });
+
+        });
+
+    }
+
+
+    /* =========================================================
+       READ SAVED PLAN
+       ========================================================= */
+
+    const goal =
+        localStorage.getItem("fittrackGoal") || "Muscle Gain";
+
+    const level =
+        localStorage.getItem("fittrackLevel") || "Beginner";
+
+    const days =
+        Number(localStorage.getItem("fittrackDays")) || 5;
+
+
+    /* =========================================================
+       DISPLAY SUMMARY
+       ========================================================= */
+
+    const goalDisplay =
+        document.getElementById("goalDisplay");
+
+    const levelDisplay =
+        document.getElementById("levelDisplay");
+
+    const daysDisplay =
+        document.getElementById("daysDisplay");
+
+    const workoutSubtitle =
+        document.getElementById("workoutSubtitle");
+
+
+    if (goalDisplay) {
+        goalDisplay.textContent = goal;
+    }
+
+    if (levelDisplay) {
+        levelDisplay.textContent = level;
+    }
+
+    if (daysDisplay) {
+        daysDisplay.innerHTML =
+            `${days} <span>days</span>`;
+    }
+
+    if (workoutSubtitle) {
+
+        workoutSubtitle.textContent =
+            `${level} level training designed around your ${goal.toLowerCase()} goal and ${days} training days per week.`;
+
+    }
+
+
+    /* =========================================================
+       EXERCISE DATABASE
+       ========================================================= */
+
+    const exercises = {
+
+        Beginner: {
+
+            push: [
+
+                {
+                    name: "Machine Chest Press",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "90 sec"
+                },
+
+                {
+                    name: "Seated Shoulder Press",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "90 sec"
+                },
+
+                {
+                    name: "Cable Chest Fly",
+                    sets: "2",
+                    reps: "10–15",
+                    rest: "60 sec"
+                },
+
+                {
+                    name: "Rope Triceps Pushdown",
+                    sets: "3",
+                    reps: "10–15",
+                    rest: "60 sec"
+                }
+
+            ],
+
+            pull: [
+
+                {
+                    name: "Lat Pulldown",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "90 sec"
+                },
+
+                {
+                    name: "Seated Cable Row",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "90 sec"
+                },
+
+                {
+                    name: "Face Pull",
+                    sets: "2",
+                    reps: "12–15",
+                    rest: "60 sec"
+                },
+
+                {
+                    name: "Dumbbell Curl",
+                    sets: "3",
+                    reps: "10–15",
+                    rest: "60 sec"
+                }
+
+            ],
+
+            legs: [
+
+                {
+                    name: "Leg Press",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "120 sec"
+                },
+
+                {
+                    name: "Leg Extension",
+                    sets: "3",
+                    reps: "10–15",
+                    rest: "60 sec"
+                },
+
+                {
+                    name: "Leg Curl",
+                    sets: "3",
+                    reps: "10–15",
+                    rest: "60 sec"
+                },
+
+                {
+                    name: "Standing Calf Raises",
+                    sets: "3",
+                    reps: "12–20",
+                    rest: "60 sec"
+                }
+
+            ]
+
+        },
+
+
+        Intermediate: {
+
+            push: [
+
+                {
+                    name: "Incline Dumbbell Press",
+                    sets: "3",
+                    reps: "6–10",
+                    rest: "120 sec"
+                },
+
+                {
+                    name: "Flat Bench Press",
+                    sets: "3",
+                    reps: "6–10",
+                    rest: "120 sec"
+                },
+
+                {
+                    name: "Dumbbell Shoulder Press",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "90 sec"
+                },
+
+                {
+                    name: "Rope Triceps Pushdown",
+                    sets: "3",
+                    reps: "10–15",
+                    rest: "60 sec"
+                }
+
+            ],
+
+            pull: [
+
+                {
+                    name: "Lat Pulldown",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "90 sec"
+                },
+
+                {
+                    name: "Barbell Row",
+                    sets: "3",
+                    reps: "6–10",
+                    rest: "120 sec"
+                },
+
+                {
+                    name: "Face Pull",
+                    sets: "3",
+                    reps: "12–15",
+                    rest: "60 sec"
+                },
+
+                {
+                    name: "EZ-Bar Curl",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "60 sec"
+                }
+
+            ],
+
+            legs: [
+
+                {
+                    name: "Barbell Squat",
+                    sets: "3",
+                    reps: "6–10",
+                    rest: "150 sec"
+                },
+
+                {
+                    name: "Romanian Deadlift",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "120 sec"
+                },
+
+                {
+                    name: "Leg Press",
+                    sets: "3",
+                    reps: "10–15",
+                    rest: "90 sec"
+                },
+
+                {
+                    name: "Standing Calf Raises",
+                    sets: "4",
+                    reps: "12–20",
+                    rest: "60 sec"
+                }
+
+            ]
+
+        },
+
+
+        Advanced: {
+
+            push: [
+
+                {
+                    name: "Incline Barbell Press",
+                    sets: "4",
+                    reps: "5–8",
+                    rest: "150 sec"
+                },
+
+                {
+                    name: "Weighted Dips",
+                    sets: "3",
+                    reps: "6–10",
+                    rest: "120 sec"
+                },
+
+                {
+                    name: "Seated Dumbbell Shoulder Press",
+                    sets: "3",
+                    reps: "6–10",
+                    rest: "120 sec"
+                },
+
+                {
+                    name: "Overhead Triceps Extension",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "60 sec"
+                }
+
+            ],
+
+            pull: [
+
+                {
+                    name: "Weighted Pull-Ups",
+                    sets: "4",
+                    reps: "5–8",
+                    rest: "150 sec"
+                },
+
+                {
+                    name: "Pendlay Row",
+                    sets: "4",
+                    reps: "5–8",
+                    rest: "150 sec"
+                },
+
+                {
+                    name: "Chest-Supported Row",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "90 sec"
+                },
+
+                {
+                    name: "EZ-Bar Preacher Curl",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "60 sec"
+                }
+
+            ],
+
+            legs: [
+
+                {
+                    name: "Front Squat",
+                    sets: "4",
+                    reps: "5–8",
+                    rest: "150 sec"
+                },
+
+                {
+                    name: "Romanian Deadlift",
+                    sets: "4",
+                    reps: "6–10",
+                    rest: "120 sec"
+                },
+
+                {
+                    name: "Bulgarian Split Squat",
+                    sets: "3",
+                    reps: "8–12",
+                    rest: "90 sec"
+                },
+
+                {
+                    name: "Seated Calf Raises",
+                    sets: "4",
+                    reps: "12–20",
+                    rest: "60 sec"
+                }
+
+            ]
+
+        }
+
+    };
+
+
+    /* =========================================================
+       FULL BODY WORKOUTS
+       ========================================================= */
+
+    function getFullBody(type) {
+
+        if (type === "A") {
+
+            return [
+
+                exercises[level].legs[0],
+
+                exercises[level].push[0],
+
+                exercises[level].pull[0],
+
+                exercises[level].push[1],
+
+                exercises[level].pull[3]
+
+            ];
+
+        }
+
+
+        if (type === "B") {
+
+            return [
+
+                exercises[level].legs[1],
+
+                exercises[level].push[1],
+
+                exercises[level].pull[1],
+
+                exercises[level].push[2],
+
+                exercises[level].pull[3]
+
+            ];
+
+        }
+
+
+        return [
+
+            exercises[level].legs[2],
+
+            exercises[level].push[0],
+
+            exercises[level].pull[1],
+
+            exercises[level].push[3],
+
+            exercises[level].legs[3]
+
+        ];
+
+    }
+
+
+    /* =========================================================
+       WEEKLY SCHEDULES
+       ========================================================= */
+
+    const schedules = {
+
+        3: [
+
+            {
+                day: "Day 1",
+                name: "Full Body A",
+                icon: "💪",
+                type: "fullbodyA"
+            },
+
+            {
+                day: "Day 2",
+                name: "Rest",
+                icon: "😴",
+                type: "rest"
+            },
+
+            {
+                day: "Day 3",
+                name: "Full Body B",
+                icon: "🏋️",
+                type: "fullbodyB"
+            },
+
+            {
+                day: "Day 4",
+                name: "Rest",
+                icon: "😴",
+                type: "rest"
+            },
+
+            {
+                day: "Day 5",
+                name: "Full Body C",
+                icon: "🔥",
+                type: "fullbodyC"
+            },
+
+            {
+                day: "Day 6",
+                name: "Rest",
+                icon: "😴",
+                type: "rest"
+            },
+
+            {
+                day: "Day 7",
+                name: "Rest",
+                icon: "🧘",
+                type: "rest"
+            }
+
+        ],
+
+
+        4: [
+
+            {
+                day: "Day 1",
+                name: "Upper Body A",
+                icon: "💪",
+                type: "push"
+            },
+
+            {
+                day: "Day 2",
+                name: "Lower Body A",
+                icon: "🦵",
+                type: "legs"
+            },
+
+            {
+                day: "Day 3",
+                name: "Rest",
+                icon: "😴",
+                type: "rest"
+            },
+
+            {
+                day: "Day 4",
+                name: "Upper Body B",
+                icon: "🏋️",
+                type: "pull"
+            },
+
+            {
+                day: "Day 5",
+                name: "Lower Body B",
+                icon: "🔥",
+                type: "legs"
+            },
+
+            {
+                day: "Day 6",
+                name: "Rest",
+                icon: "😴",
+                type: "rest"
+            },
+
+            {
+                day: "Day 7",
+                name: "Rest",
+                icon: "🧘",
+                type: "rest"
+            }
+
+        ],
+
+
+        5: [
+
+            {
+                day: "Day 1",
+                name: "Push",
+                icon: "💪",
+                type: "push"
+            },
+
+            {
+                day: "Day 2",
+                name: "Pull",
+                icon: "🏋️",
+                type: "pull"
+            },
+
+            {
+                day: "Day 3",
+                name: "Legs",
+                icon: "🦵",
+                type: "legs"
+            },
+
+            {
+                day: "Day 4",
+                name: "Upper Body",
+                icon: "🔥",
+                type: "push"
+            },
+
+            {
+                day: "Day 5",
+                name: "Lower Body",
+                icon: "⚡",
+                type: "legs"
+            },
+
+            {
+                day: "Day 6",
+                name: "Rest",
+                icon: "😴",
+                type: "rest"
+            },
+
+            {
+                day: "Day 7",
+                name: "Rest",
+                icon: "🧘",
+                type: "rest"
+            }
+
+        ],
+
+
+        6: [
+
+            {
+                day: "Day 1",
+                name: "Push A",
+                icon: "💪",
+                type: "push"
+            },
+
+            {
+                day: "Day 2",
+                name: "Pull A",
+                icon: "🏋️",
+                type: "pull"
+            },
+
+            {
+                day: "Day 3",
+                name: "Legs A",
+                icon: "🦵",
+                type: "legs"
+            },
+
+            {
+                day: "Day 4",
+                name: "Push B",
+                icon: "🔥",
+                type: "push"
+            },
+
+            {
+                day: "Day 5",
+                name: "Pull B",
+                icon: "⚡",
+                type: "pull"
+            },
+
+            {
+                day: "Day 6",
+                name: "Legs B",
+                icon: "🏋️",
+                type: "legs"
+            },
+
+            {
+                day: "Day 7",
+                name: "Rest",
+                icon: "😴",
+                type: "rest"
+            }
+
+        ]
+
+    };
+
+
+    /* =========================================================
+       GET EXERCISES FOR SESSION
+       ========================================================= */
+
+    function getWorkoutExercises(type) {
+
+        if (type === "push") {
+            return exercises[level].push;
+        }
+
+        if (type === "pull") {
+            return exercises[level].pull;
+        }
+
+        if (type === "legs") {
+            return exercises[level].legs;
+        }
+
+        if (type === "fullbodyA") {
+            return getFullBody("A");
+        }
+
+        if (type === "fullbodyB") {
+            return getFullBody("B");
+        }
+
+        if (type === "fullbodyC") {
+            return getFullBody("C");
+        }
+
+        return [];
+
+    }
+
+
+    /* =========================================================
+       RENDER EXERCISE ROW
+       ========================================================= */
+
+    function createExerciseRow(exercise) {
+
+        return `
+
+            <div class="exercise-row">
+
+                <div class="exercise-name">
+                    ${exercise.name}
+                </div>
+
+                <div class="exercise-meta">
+
+                    <span>
+                        ${exercise.sets} sets
+                    </span>
+
+                    <span>
+                        ${exercise.reps} reps
+                    </span>
+
+                    <span>
+                        ${exercise.rest}
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================================================
+       START WORKOUT
+       ========================================================= */
+
+    function startWorkout(name, type) {
+
+        localStorage.setItem(
+            "fittrackWorkoutName",
+            name
+        );
+
+        localStorage.setItem(
+            "fittrackWorkoutType",
+            type
+        );
+
+        window.location.href =
+            "workout-session.html";
+
+    }
+
+
+    /* =========================================================
+       RENDER SCHEDULE
+       ========================================================= */
+
+    function renderSchedule() {
+
+        const container =
+            document.getElementById("scheduleContainer");
+
+        const counter =
+            document.getElementById("scheduleCounter");
+
+
+        if (!container) {
+            return;
+        }
+
+
+        const selectedSchedule =
+            schedules[days] || schedules[5];
+
+
+        if (counter) {
+
+            counter.textContent =
+                `${selectedSchedule.length} DAY SCHEDULE`;
+
+        }
+
+
+        container.innerHTML = "";
+
+
+        selectedSchedule.forEach(function (item) {
+
+            if (item.type === "rest") {
+
+                const restCard =
+                    document.createElement("article");
+
+                restCard.className =
+                    "rest-card";
+
+
+                restCard.innerHTML = `
+
+                    <div class="rest-icon">
+                        ${item.icon}
+                    </div>
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+                    <p>
+                        Recovery is part of progress.
+                        Rest, hydrate, and prepare for
+                        your next training session.
+                    </p>
+
+                `;
+
+
+                container.appendChild(restCard);
+
+                return;
+
+            }
+
+
+            const card =
+                document.createElement("article");
+
+            card.className =
+                "schedule-card";
+
+
+            const workoutExercises =
+                getWorkoutExercises(item.type);
+
+
+            const exercisesHTML =
+                workoutExercises
+                    .map(createExerciseRow)
+                    .join("");
+
+
+            card.innerHTML = `
+
+                <div class="schedule-top">
+
+                    <div class="day-pill">
+                        ${item.day}
+                    </div>
+
+                    <div class="workout-icon">
+                        ${item.icon}
+                    </div>
+
+                </div>
+
+
+                <h3 class="workout-card-title">
+                    ${item.name}
+                </h3>
+
+
+                <p class="workout-card-subtitle">
+                    ${level} level session
+                    designed for your
+                    ${goal.toLowerCase()} goal.
+                </p>
+
+
+                <div class="exercise-list">
+                    ${exercisesHTML}
+                </div>
+
+
+                <button
+                    type="button"
+                    class="start-workout-button"
+                >
+                    Start Workout →
+                </button>
+
+            `;
+
+
+            const button =
+                card.querySelector(
+                    ".start-workout-button"
+                );
+
+
+            if (button) {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        startWorkout(
+                            item.name,
+                            item.type
+                        );
+
+                    }
+                );
+
+            }
+
+
+            container.appendChild(card);
+
+        });
+
+    }
+
+
+    /* =========================================================
+       INITIALIZE
+       ========================================================= */
+
+    renderSchedule();
+
+</script>
+
+</body>
+</html>

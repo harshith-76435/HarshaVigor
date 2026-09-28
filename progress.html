@@ -1,0 +1,5257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HarshaVigor - Progress</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* =========================================================
+           HARSHAVIGOR PROGRESS
+           PREMIUM GOALS-STYLE DESIGN
+           ========================================================= */
+
+        :root {
+            --orange: #ff5a1f;
+            --orange-light: #ff6a2a;
+            --orange-dark: #ff4d16;
+
+            --bg: #07090c;
+            --card: rgba(18, 21, 27, 0.90);
+            --card-dark: rgba(9, 12, 16, 0.94);
+
+            --text: #ffffff;
+            --muted: #858c96;
+            --muted-dark: #666e79;
+
+            --border: rgba(255,255,255,0.075);
+            --border-soft: rgba(255,255,255,0.055);
+
+            --green: #63d391;
+            --red: #ff6b5f;
+        }
+
+
+        /* =========================================================
+           PAGE
+           ========================================================= */
+
+        body {
+
+            margin: 0;
+
+            background:
+                radial-gradient(
+                    circle at 15% 8%,
+                    rgba(255, 90, 31, 0.11),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 88% 28%,
+                    rgba(255, 90, 31, 0.07),
+                    transparent 27%
+                ),
+                #07090c;
+
+            color: var(--text);
+
+            min-height: 100vh;
+
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+           ========================================================= */
+
+        header,
+        .navbar {
+
+            position: relative;
+
+            z-index: 1000;
+
+            min-height: 76px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 38px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(13, 16, 21, 0.96),
+                    rgba(8, 10, 14, 0.92)
+                );
+
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+
+            box-shadow:
+                0 12px 40px rgba(0,0,0,0.28);
+
+            backdrop-filter: blur(20px);
+
+        }
+
+
+        header .logo,
+        .navbar .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: #ffffff;
+
+            font-size: 19px;
+
+            font-weight: 850;
+
+            letter-spacing: -0.5px;
+
+            white-space: nowrap;
+
+        }
+
+
+        .nav-links {
+
+            margin-left: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 6px;
+
+            border: 1px solid rgba(255,255,255,0.055);
+
+            border-radius: 15px;
+
+            background: rgba(255,255,255,0.025);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.035);
+
+        }
+
+
+        .nav-links a {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            min-height: 38px;
+
+            padding: 0 13px;
+
+            margin: 0;
+
+            border-radius: 10px;
+
+            color: #858c96;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+
+            transition:
+                color 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        .nav-links a:hover {
+
+            color: #ffffff;
+
+            background: rgba(255,255,255,0.055);
+
+            transform: translateY(-1px);
+
+        }
+
+
+        .nav-links a.active {
+
+            color: #ffffff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,90,31,0.19),
+                    rgba(255,90,31,0.06)
+                );
+
+            border: 1px solid rgba(255,90,31,0.20);
+
+            box-shadow:
+                0 0 22px rgba(255,90,31,0.08),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+
+        }
+
+
+        .nav-links a.active::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+
+            bottom: -7px;
+
+            width: 18px;
+
+            height: 3px;
+
+            transform: translateX(-50%);
+
+            border-radius: 999px;
+
+            background: var(--orange);
+
+            box-shadow:
+                0 0 10px rgba(255,90,31,0.7);
+
+        }
+
+
+        .mobile-menu-button {
+
+            display: none;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 44px;
+
+            height: 44px;
+
+            margin-left: auto;
+
+            background: rgba(255,255,255,0.035);
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            border-radius: 12px;
+
+            color: #ffffff;
+
+            font-size: 21px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.25s ease,
+                border-color 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        .mobile-menu-button:hover {
+
+            background: rgba(255,90,31,0.10);
+
+            border-color: rgba(255,90,31,0.35);
+
+            transform: translateY(-1px);
+
+        }
+
+
+        /* =========================================================
+           MAIN
+           ========================================================= */
+
+        .progress-page {
+
+            min-height: calc(100vh - 76px);
+
+            position: relative;
+
+            padding: 70px 24px 95px;
+
+            overflow: hidden;
+
+        }
+
+
+        .progress-page::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 440px;
+
+            height: 440px;
+
+            top: 110px;
+
+            left: -220px;
+
+            border-radius: 50%;
+
+            background: rgba(255,90,31,0.075);
+
+            filter: blur(105px);
+
+            pointer-events: none;
+
+        }
+
+
+        .progress-page::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 390px;
+
+            height: 390px;
+
+            right: -190px;
+
+            bottom: 120px;
+
+            border-radius: 50%;
+
+            background: rgba(255,120,45,0.045);
+
+            filter: blur(105px);
+
+            pointer-events: none;
+
+        }
+
+
+        .progress-container {
+
+            width: min(1180px, 100%);
+
+            margin: auto;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .progress-hero {
+
+            display: grid;
+
+            grid-template-columns: minmax(0, 1fr) 230px;
+
+            gap: 40px;
+
+            align-items: end;
+
+            margin-bottom: 48px;
+
+        }
+
+
+        .progress-hero-content {
+
+            max-width: 760px;
+
+        }
+
+
+        .progress-label {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin: 0 0 16px;
+
+            padding: 7px 11px;
+
+            border: 1px solid rgba(255,90,31,0.20);
+
+            border-radius: 999px;
+
+            background: rgba(255,90,31,0.075);
+
+            color: var(--orange);
+
+            font-size: 10px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.7px;
+
+        }
+
+
+        .progress-label::before {
+
+            content: "";
+
+            width: 6px;
+
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--orange);
+
+            box-shadow:
+                0 0 10px rgba(255,90,31,0.75);
+
+        }
+
+
+        .progress-hero h1 {
+
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: clamp(43px, 6vw, 72px);
+
+            line-height: 0.98;
+
+            letter-spacing: -3px;
+
+            font-weight: 900;
+
+        }
+
+
+        .progress-hero h1 span {
+
+            color: var(--orange);
+
+        }
+
+
+        .progress-hero-description {
+
+            max-width: 650px;
+
+            margin: 20px 0 0;
+
+            color: #858c96;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+
+        }
+
+
+        .progress-status {
+
+            min-height: 135px;
+
+            padding: 20px;
+
+            border: 1px solid rgba(255,255,255,0.075);
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(25,29,36,0.90),
+                    rgba(10,13,17,0.94)
+                );
+
+            box-shadow:
+                0 22px 55px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.045);
+
+            backdrop-filter: blur(20px);
+
+        }
+
+
+        .progress-status-label {
+
+            color: #6f7782;
+
+            font-size: 9px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.5px;
+
+        }
+
+
+        .progress-status-value {
+
+            margin-top: 9px;
+
+            color: #ffffff;
+
+            font-size: 21px;
+
+            font-weight: 850;
+
+        }
+
+
+        .progress-status-line {
+
+            width: 100%;
+
+            height: 1px;
+
+            margin: 15px 0;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(255,90,31,0.55),
+                    transparent
+                );
+
+        }
+
+
+        .progress-status-bottom {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: #777f8a;
+
+            font-size: 9px;
+
+        }
+
+
+        .progress-status-dot {
+
+            width: 6px;
+
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            box-shadow:
+                0 0 9px rgba(99,211,145,0.7);
+
+        }
+
+
+        /* =========================================================
+           SECTION HEADING
+           ========================================================= */
+
+        .section-heading {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: end;
+
+            gap: 20px;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .section-heading h2 {
+
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: 21px;
+
+            font-weight: 850;
+
+            letter-spacing: -0.5px;
+
+        }
+
+
+        .section-heading p {
+
+            margin: 5px 0 0;
+
+            color: #707781;
+
+            font-size: 12px;
+
+        }
+
+
+        .section-counter {
+
+            color: #666d76;
+
+            font-size: 9px;
+
+            font-weight: 750;
+
+            letter-spacing: 1.4px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        /* =========================================================
+           SUMMARY GRID
+           ========================================================= */
+
+        .summary-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            gap: 14px;
+
+        }
+
+
+        .summary-card {
+
+            position: relative;
+
+            min-height: 112px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 20px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+
+            border-radius: 19px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(24,28,35,0.90),
+                    rgba(10,13,17,0.94)
+                );
+
+            box-shadow:
+                0 18px 50px rgba(0,0,0,0.20),
+                inset 0 1px 0 rgba(255,255,255,0.035);
+
+            backdrop-filter: blur(20px);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+
+        }
+
+
+        .summary-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 110px;
+
+            height: 110px;
+
+            top: -70px;
+
+            right: -55px;
+
+            border-radius: 50%;
+
+            background: rgba(255,90,31,0.055);
+
+            filter: blur(25px);
+
+            pointer-events: none;
+
+        }
+
+
+        .summary-card:hover {
+
+            transform: translateY(-4px);
+
+            border-color: rgba(255,90,31,0.24);
+
+            box-shadow:
+                0 22px 55px rgba(0,0,0,0.30),
+                0 0 28px rgba(255,90,31,0.055);
+
+        }
+
+
+        .summary-icon {
+
+            width: 48px;
+
+            height: 48px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border: 1px solid rgba(255,90,31,0.18);
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,90,31,0.16),
+                    rgba(255,90,31,0.035)
+                );
+
+            font-size: 21px;
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.04);
+
+        }
+
+
+        .summary-info {
+
+            min-width: 0;
+
+        }
+
+
+        .summary-info span {
+
+            display: block;
+
+            color: #737b86;
+
+            font-size: 8px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.4px;
+
+        }
+
+
+        .summary-info strong {
+
+            display: block;
+
+            margin-top: 7px;
+
+            color: #ffffff;
+
+            font-size: 22px;
+
+            font-weight: 900;
+
+            letter-spacing: -0.5px;
+
+            overflow-wrap: anywhere;
+
+        }
+
+
+        /* =========================================================
+           GOAL PROGRESS
+           ========================================================= */
+
+        .goal-progress {
+
+            grid-column: 1 / -1;
+
+            padding: 23px;
+
+            border: 1px solid rgba(255,90,31,0.15);
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,90,31,0.075),
+                    rgba(14,17,22,0.92)
+                );
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.04),
+                0 18px 55px rgba(0,0,0,0.16);
+
+        }
+
+
+        .goal-progress-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+        }
+
+
+        .goal-progress-header span {
+
+            color: #9299a3;
+
+            font-size: 9px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.5px;
+
+        }
+
+
+        .goal-progress-header strong {
+
+            color: #ff6a32;
+
+            font-size: 20px;
+
+            font-weight: 900;
+
+        }
+
+
+        .progress-track {
+
+            width: 100%;
+
+            height: 9px;
+
+            margin-top: 17px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background: rgba(255,255,255,0.07);
+
+            box-shadow:
+                inset 0 1px 2px rgba(0,0,0,0.30);
+
+        }
+
+
+        .progress-fill {
+
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff4d16,
+                    #ff7a3d
+                );
+
+            box-shadow:
+                0 0 18px rgba(255,90,31,0.45);
+
+            transition: width 0.6s ease;
+
+        }
+
+
+        .goal-progress-text {
+
+            margin: 10px 0 0;
+
+            color: #737b86;
+
+            font-size: 10px;
+
+        }
+
+
+        /* =========================================================
+           MAIN CARD
+           ========================================================= */
+
+        .progress-card {
+
+            position: relative;
+
+            margin-top: 18px;
+
+            padding: 27px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+
+            border-radius: 24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(22,25,31,0.92),
+                    rgba(9,12,16,0.95)
+                );
+
+            box-shadow:
+                0 24px 70px rgba(0,0,0,0.24),
+                inset 0 1px 0 rgba(255,255,255,0.035);
+
+            backdrop-filter: blur(20px);
+
+        }
+
+
+        .progress-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 190px;
+
+            height: 190px;
+
+            top: -115px;
+
+            right: -80px;
+
+            border-radius: 50%;
+
+            background: rgba(255,90,31,0.055);
+
+            filter: blur(38px);
+
+            pointer-events: none;
+
+        }
+
+
+        .card-header {
+
+            position: relative;
+
+            z-index: 1;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 24px;
+
+        }
+
+
+        .card-label {
+
+            margin: 0 0 7px;
+
+            color: var(--orange);
+
+            font-size: 9px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.8px;
+
+        }
+
+
+        .card-header h2 {
+
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: 25px;
+
+            font-weight: 850;
+
+            letter-spacing: -0.7px;
+
+        }
+
+
+        .card-header-icon {
+
+            width: 48px;
+
+            height: 48px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border: 1px solid rgba(255,90,31,0.17);
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,90,31,0.15),
+                    rgba(255,90,31,0.035)
+                );
+
+            font-size: 21px;
+
+        }
+
+
+        /* =========================================================
+           WEIGHT INPUT
+           ========================================================= */
+
+        .weight-input-row {
+
+            position: relative;
+
+            z-index: 1;
+
+            display: grid;
+
+            grid-template-columns: minmax(0, 1fr) 170px;
+
+            gap: 12px;
+
+        }
+
+
+        .weight-input-row input {
+
+            width: 100%;
+
+            height: 52px;
+
+            box-sizing: border-box;
+
+            padding: 0 16px;
+
+            outline: none;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 14px;
+
+            background: rgba(255,255,255,0.035);
+
+            color: #ffffff;
+
+            font-size: 13px;
+
+            transition:
+                border-color 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+
+        }
+
+
+        .weight-input-row input::placeholder {
+
+            color: #666e79;
+
+        }
+
+
+        .weight-input-row input:focus {
+
+            border-color: rgba(255,90,31,0.55);
+
+            background: rgba(255,255,255,0.05);
+
+            box-shadow:
+                0 0 0 3px rgba(255,90,31,0.07),
+                0 10px 30px rgba(0,0,0,0.15);
+
+        }
+
+
+        .premium-button {
+
+            height: 52px;
+
+            border: 0;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff6a2a,
+                    #ff4d16
+                );
+
+            color: #ffffff;
+
+            font-size: 12px;
+
+            font-weight: 850;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px rgba(255,90,31,0.16);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+
+        }
+
+
+        .premium-button:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 16px 35px rgba(255,90,31,0.28);
+
+        }
+
+
+        .weight-message {
+
+            min-height: 18px;
+
+            margin-top: 10px;
+
+            font-size: 10px;
+
+            font-weight: 750;
+
+        }
+
+
+        .weight-message.success {
+
+            color: var(--green);
+
+        }
+
+
+        .weight-message.error {
+
+            color: var(--red);
+
+        }
+
+
+        /* =========================================================
+           WEIGHT CHART
+           ========================================================= */
+
+        .weight-chart {
+
+            height: 250px;
+
+            margin-top: 20px;
+
+            padding: 22px 18px 12px;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(255,255,255,0.05);
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(255,255,255,0.022),
+                    rgba(255,255,255,0.010)
+                );
+
+        }
+
+
+        .weight-bars {
+
+            height: 100%;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: center;
+
+            gap: clamp(7px, 2vw, 20px);
+
+        }
+
+
+        .weight-bar {
+
+            height: 100%;
+
+            flex: 1;
+
+            max-width: 72px;
+
+            min-width: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            align-items: center;
+
+            gap: 8px;
+
+        }
+
+
+        .weight-bar-value {
+
+            width: 100%;
+
+            max-width: 52px;
+
+            min-height: 30px;
+
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: center;
+
+            padding-top: 7px;
+
+            box-sizing: border-box;
+
+            border-radius: 11px 11px 5px 5px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #ff6d2c,
+                    #ff4d16
+                );
+
+            box-shadow:
+                0 0 20px rgba(255,90,31,0.15);
+
+        }
+
+
+        .weight-bar-value span {
+
+            color: #ffffff;
+
+            font-size: 8px;
+
+            font-weight: 900;
+
+        }
+
+
+        .weight-bar small {
+
+            color: #656d78;
+
+            font-size: 8px;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =========================================================
+           WEIGHT HISTORY
+           ========================================================= */
+
+        .weight-history {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            gap: 10px;
+
+            margin-top: 18px;
+
+        }
+
+
+        .weight-history-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 14px;
+
+            border: 1px solid var(--border-soft);
+
+            border-radius: 15px;
+
+            background: rgba(255,255,255,0.025);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+
+        }
+
+
+        .weight-history-item:hover {
+
+            transform: translateY(-2px);
+
+            border-color: rgba(255,90,31,0.18);
+
+        }
+
+
+        .weight-history-icon {
+
+            width: 37px;
+
+            height: 37px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: rgba(255,90,31,0.10);
+
+            font-size: 16px;
+
+        }
+
+
+        .weight-history-info strong {
+
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+        }
+
+
+        .weight-history-info span {
+
+            display: block;
+
+            margin-top: 4px;
+
+            color: #666e79;
+
+            font-size: 9px;
+
+        }
+
+
+        /* =========================================================
+           EMPTY STATE
+           ========================================================= */
+
+        .empty-state {
+
+            grid-column: 1 / -1;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            border: 1px dashed rgba(255,255,255,0.09);
+
+            border-radius: 17px;
+
+            background: rgba(255,255,255,0.015);
+
+        }
+
+
+        .empty-state-icon {
+
+            font-size: 30px;
+
+        }
+
+
+        .empty-state h3 {
+
+            margin: 13px 0 7px;
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+        }
+
+
+        .empty-state p {
+
+            max-width: 420px;
+
+            margin: 0 auto;
+
+            color: #6f7782;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================================================
+           NUTRITION
+           ========================================================= */
+
+        .target-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+
+            gap: 12px;
+
+        }
+
+
+        .target-card {
+
+            padding: 21px;
+
+            border: 1px solid var(--border-soft);
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.035),
+                    rgba(255,255,255,0.012)
+                );
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+
+        }
+
+
+        .target-card:hover {
+
+            transform: translateY(-3px);
+
+            border-color: rgba(255,90,31,0.20);
+
+        }
+
+
+        .target-icon {
+
+            width: 39px;
+
+            height: 39px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 17px;
+
+            border-radius: 12px;
+
+            background: rgba(255,90,31,0.10);
+
+            border: 1px solid rgba(255,90,31,0.10);
+
+            font-size: 17px;
+
+        }
+
+
+        .target-card > span {
+
+            display: block;
+
+            color: #747c87;
+
+            font-size: 8px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.3px;
+
+        }
+
+
+        .target-card strong {
+
+            display: block;
+
+            margin-top: 8px;
+
+            color: #ffffff;
+
+            font-size: 24px;
+
+            font-weight: 900;
+
+        }
+
+
+        .target-card small {
+
+            display: block;
+
+            margin-top: 4px;
+
+            color: #626a75;
+
+            font-size: 9px;
+
+        }
+
+
+        /* =========================================================
+           WORKOUT HISTORY
+           ========================================================= */
+
+        .workout-history {
+
+            display: grid;
+
+            gap: 9px;
+
+        }
+
+
+        .workout-history-item {
+
+            display: grid;
+
+            grid-template-columns: 46px minmax(0, 1fr) auto;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 15px;
+
+            border: 1px solid var(--border-soft);
+
+            border-radius: 16px;
+
+            background: rgba(255,255,255,0.025);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease;
+
+        }
+
+
+        .workout-history-item:hover {
+
+            transform: translateY(-2px);
+
+            border-color: rgba(255,90,31,0.18);
+
+        }
+
+
+        .history-workout-icon {
+
+            width: 43px;
+
+            height: 43px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background: rgba(255,90,31,0.10);
+
+            border: 1px solid rgba(255,90,31,0.10);
+
+            font-size: 18px;
+
+        }
+
+
+        .history-workout-info {
+
+            min-width: 0;
+
+        }
+
+
+        .history-workout-info h3 {
+
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+        }
+
+
+        .history-workout-info p {
+
+            margin: 5px 0 0;
+
+            color: #6f7782;
+
+            font-size: 10px;
+
+        }
+
+
+        .history-workout-date {
+
+            text-align: right;
+
+        }
+
+
+        .history-workout-date span {
+
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 10px;
+
+            font-weight: 750;
+
+        }
+
+
+        .history-workout-date small {
+
+            display: block;
+
+            margin-top: 5px;
+
+            color: var(--orange);
+
+            font-size: 8px;
+
+            font-weight: 850;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        /* =========================================================
+           CALENDAR
+           ========================================================= */
+
+        .calendar-panel {
+
+            margin-top: 22px;
+
+            padding: 24px;
+
+            border: 1px solid rgba(255,255,255,0.055);
+
+            border-radius: 19px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.025),
+                    rgba(255,255,255,0.010)
+                );
+
+        }
+
+
+        .calendar-heading-label {
+
+            margin: 0 0 7px;
+
+            color: var(--orange);
+
+            font-size: 9px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.6px;
+
+        }
+
+
+        .calendar-heading h3 {
+
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: 20px;
+
+            font-weight: 850;
+
+        }
+
+
+        .calendar-heading span {
+
+            display: block;
+
+            margin-top: 6px;
+
+            color: #666e79;
+
+            font-size: 10px;
+
+        }
+
+
+        .calendar-controls {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin: 23px 0 17px;
+
+        }
+
+
+        .calendar-controls button {
+
+            width: 38px;
+
+            height: 38px;
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            border-radius: 11px;
+
+            background: rgba(255,255,255,0.035);
+
+            color: #ffffff;
+
+            font-size: 17px;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+
+        }
+
+
+        .calendar-controls button:hover {
+
+            background: rgba(255,90,31,0.10);
+
+            border-color: rgba(255,90,31,0.30);
+
+            transform: translateY(-1px);
+
+        }
+
+
+        #calendarMonth {
+
+            color: #ffffff;
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+        }
+
+
+        .calendar-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(7, minmax(0, 1fr));
+
+            gap: 7px;
+
+        }
+
+
+        .calendar-weekday {
+
+            padding: 8px 0;
+
+            text-align: center;
+
+            color: #5e6671;
+
+            font-size: 8px;
+
+            font-weight: 850;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .calendar-day {
+
+            min-height: 41px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border: 1px solid rgba(255,255,255,0.045);
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,0.018);
+
+            color: #8b939e;
+
+            font-size: 10px;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+
+        }
+
+
+        .calendar-day:hover:not(.empty) {
+
+            transform: translateY(-1px);
+
+            border-color: rgba(255,90,31,0.20);
+
+        }
+
+
+        .calendar-day.today {
+
+            border-color: rgba(255,90,31,0.42);
+
+            box-shadow:
+                inset 0 0 0 1px rgba(255,90,31,0.10);
+
+        }
+
+
+        .calendar-day.completed {
+
+            color: #ffffff;
+
+            border-color: rgba(255,90,31,0.38);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,90,31,0.28),
+                    rgba(255,90,31,0.09)
+                );
+
+            box-shadow:
+                0 0 18px rgba(255,90,31,0.09);
+
+        }
+
+
+        .calendar-day.completed.today {
+
+            box-shadow:
+                0 0 20px rgba(255,90,31,0.16),
+                inset 0 0 0 1px rgba(255,90,31,0.20);
+
+        }
+
+
+        .calendar-day.empty {
+
+            border-color: transparent;
+
+            background: transparent;
+
+        }
+
+
+        .calendar-legend {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 18px;
+
+            margin-top: 17px;
+
+            color: #6d7580;
+
+            font-size: 9px;
+
+        }
+
+
+        .calendar-legend div {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+        }
+
+
+        .legend-box {
+
+            width: 12px;
+
+            height: 12px;
+
+            display: inline-block;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 4px;
+
+            background: rgba(255,255,255,0.025);
+
+        }
+
+
+        .legend-box.completed {
+
+            border-color: rgba(255,90,31,0.38);
+
+            background: rgba(255,90,31,0.28);
+
+        }
+
+
+        .legend-box.today {
+
+            border-color: rgba(255,90,31,0.42);
+
+            background: rgba(255,255,255,0.025);
+
+        }
+
+
+        /* =========================================================
+           CONSISTENCY
+           ========================================================= */
+
+        .consistency-container {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+
+        }
+
+
+        .consistency-circle {
+
+            width: 148px;
+
+            height: 148px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(255,90,31,0.25);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,90,31,0.13),
+                    rgba(255,90,31,0.025) 65%,
+                    transparent 66%
+                );
+
+            box-shadow:
+                0 0 45px rgba(255,90,31,0.07),
+                inset 0 0 30px rgba(255,90,31,0.04);
+
+        }
+
+
+        .consistency-circle strong {
+
+            color: #ffffff;
+
+            font-size: 39px;
+
+            line-height: 1;
+
+            font-weight: 900;
+
+        }
+
+
+        .consistency-circle span {
+
+            margin-top: 7px;
+
+            color: #737b86;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+        }
+
+
+        .consistency-info h3 {
+
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: 23px;
+
+            font-weight: 850;
+
+        }
+
+
+        .consistency-info p {
+
+            max-width: 520px;
+
+            margin: 9px 0 0;
+
+            color: #737b86;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================================================
+           STEPS
+           ========================================================= */
+
+        .steps-content {
+
+            display: grid;
+
+            grid-template-columns: minmax(0, 1fr) 150px;
+
+            align-items: center;
+
+            gap: 35px;
+
+        }
+
+
+        .steps-label {
+
+            color: #737b86;
+
+            font-size: 9px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.5px;
+
+        }
+
+
+        .steps-heading {
+
+            margin: 6px 0 0;
+
+            color: #ffffff;
+
+            font-size: 24px;
+
+            font-weight: 850;
+
+        }
+
+
+        .step-number {
+
+            margin-top: 20px;
+
+        }
+
+
+        .step-number strong {
+
+            color: #ffffff;
+
+            font-size: 34px;
+
+            font-weight: 900;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .step-number span {
+
+            margin-left: 7px;
+
+            color: #6f7782;
+
+            font-size: 11px;
+
+        }
+
+
+        .step-track {
+
+            width: 100%;
+
+            height: 9px;
+
+            margin-top: 15px;
+
+            overflow: hidden;
+
+            border-radius: 999px;
+
+            background: rgba(255,255,255,0.07);
+
+        }
+
+
+        .step-fill {
+
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff4f16,
+                    #ff7a3d
+                );
+
+            box-shadow:
+                0 0 15px rgba(255,90,31,0.35);
+
+            transition: width 0.5s ease;
+
+        }
+
+
+        .step-percent {
+
+            margin: 9px 0 0;
+
+            color: #737b86;
+
+            font-size: 10px;
+
+        }
+
+
+        .step-ring {
+
+            width: 135px;
+
+            height: 135px;
+
+            margin-left: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(255,90,31,0.10) 0 54%,
+                    transparent 55%
+                );
+
+            border: 1px solid rgba(255,90,31,0.18);
+
+            box-shadow:
+                0 0 40px rgba(255,90,31,0.055);
+
+        }
+
+
+        .step-ring-inner {
+
+            text-align: center;
+
+        }
+
+
+        .step-ring-inner strong {
+
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 28px;
+
+            font-weight: 900;
+
+        }
+
+
+        .step-ring-inner span {
+
+            color: #737b86;
+
+            font-size: 9px;
+
+        }
+
+
+        /* =========================================================
+           MOTIVATION
+           ========================================================= */
+
+        .motivation-card {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 24px;
+
+            margin-top: 18px;
+
+            padding: 30px;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(255,90,31,0.18);
+
+            border-radius: 24px;
+
+            background:
+                radial-gradient(
+                    circle at 15% 50%,
+                    rgba(255,90,31,0.13),
+                    transparent 34%
+                ),
+                linear-gradient(
+                    145deg,
+                    rgba(255,90,31,0.07),
+                    rgba(12,15,19,0.94)
+                );
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.04);
+
+        }
+
+
+        .motivation-icon {
+
+            width: 68px;
+
+            height: 68px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,90,31,0.20),
+                    rgba(255,90,31,0.05)
+                );
+
+            border: 1px solid rgba(255,90,31,0.25);
+
+            font-size: 31px;
+
+            box-shadow:
+                0 0 30px rgba(255,90,31,0.08);
+
+        }
+
+
+        .motivation-card p {
+
+            margin: 0 0 7px;
+
+            color: var(--orange);
+
+            font-size: 9px;
+
+            font-weight: 850;
+
+            letter-spacing: 1.8px;
+
+        }
+
+
+        .motivation-card h2 {
+
+            margin: 0;
+
+            color: #ffffff;
+
+            font-size: clamp(20px, 3vw, 29px);
+
+            line-height: 1.25;
+
+            font-weight: 850;
+
+            letter-spacing: -0.7px;
+
+        }
+
+
+        .motivation-card span {
+
+            display: block;
+
+            margin-top: 8px;
+
+            color: #737b86;
+
+            font-size: 11px;
+
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media screen and (max-width: 1000px) {
+
+            .progress-hero {
+
+                grid-template-columns: 1fr;
+
+                gap: 22px;
+
+            }
+
+
+            .progress-status {
+
+                width: min(100%, 330px);
+
+            }
+
+
+            .summary-grid {
+
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            }
+
+
+            .target-grid {
+
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+
+            }
+
+        }
+
+
+        @media screen and (max-width: 768px) {
+
+            header,
+            .navbar {
+
+                min-height: 68px;
+
+                padding: 0 16px;
+
+            }
+
+
+            header .logo,
+            .navbar .logo {
+
+                font-size: 17px;
+
+            }
+
+
+            .mobile-menu-button {
+
+                display: flex !important;
+
+            }
+
+
+            .nav-links {
+
+                display: none !important;
+
+                position: absolute;
+
+                top: calc(100% + 8px);
+
+                left: 12px;
+
+                right: 12px;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 5px;
+
+                padding: 10px;
+
+                margin: 0;
+
+                border: 1px solid rgba(255,255,255,0.08);
+
+                border-radius: 18px;
+
+                background:
+                    linear-gradient(
+                        145deg,
+                        rgba(16,19,25,0.98),
+                        rgba(8,10,14,0.98)
+                    );
+
+                box-shadow:
+                    0 25px 70px rgba(0,0,0,0.55),
+                    inset 0 1px 0 rgba(255,255,255,0.04);
+
+                backdrop-filter: blur(25px);
+
+                z-index: 10000;
+
+            }
+
+
+            .nav-links.mobile-open {
+
+                display: flex !important;
+
+            }
+
+
+            .nav-links a {
+
+                width: auto;
+
+                min-height: 46px;
+
+                padding: 0 15px;
+
+                border-radius: 11px;
+
+                font-size: 13px;
+
+            }
+
+
+            .nav-links a:hover {
+
+                transform: none;
+
+            }
+
+
+            .nav-links a.active::after {
+
+                left: auto;
+
+                right: 13px;
+
+                bottom: 50%;
+
+                width: 4px;
+
+                height: 18px;
+
+                transform: translateY(50%);
+
+            }
+
+
+            .progress-page {
+
+                min-height: calc(100vh - 68px);
+
+                padding: 48px 16px 70px;
+
+            }
+
+
+            .progress-hero {
+
+                margin-bottom: 38px;
+
+            }
+
+
+            .progress-hero h1 {
+
+                font-size: 44px;
+
+                letter-spacing: -2px;
+
+            }
+
+
+            .progress-hero-description {
+
+                font-size: 12px;
+
+            }
+
+
+            .progress-status {
+
+                width: 100%;
+
+                box-sizing: border-box;
+
+            }
+
+
+            .summary-grid {
+
+                grid-template-columns: 1fr 1fr;
+
+                gap: 10px;
+
+            }
+
+
+            .summary-card {
+
+                min-height: 88px;
+
+                padding: 14px;
+
+                border-radius: 16px;
+
+            }
+
+
+            .summary-icon {
+
+                width: 39px;
+
+                height: 39px;
+
+                border-radius: 11px;
+
+                font-size: 17px;
+
+            }
+
+
+            .summary-info span {
+
+                font-size: 7px;
+
+            }
+
+
+            .summary-info strong {
+
+                font-size: 17px;
+
+            }
+
+
+            .goal-progress {
+
+                padding: 18px;
+
+            }
+
+
+            .progress-card {
+
+                padding: 20px;
+
+                border-radius: 19px;
+
+            }
+
+
+            .card-header {
+
+                margin-bottom: 20px;
+
+            }
+
+
+            .card-header h2 {
+
+                font-size: 21px;
+
+            }
+
+
+            .weight-input-row {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .weight-input-row .premium-button {
+
+                width: 100%;
+
+            }
+
+
+            .weight-chart {
+
+                height: 215px;
+
+                padding: 18px 10px 10px;
+
+            }
+
+
+            .weight-history {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .target-grid {
+
+                grid-template-columns: 1fr 1fr;
+
+            }
+
+
+            .target-card {
+
+                padding: 17px;
+
+            }
+
+
+            .target-card strong {
+
+                font-size: 22px;
+
+            }
+
+
+            .workout-history-item {
+
+                grid-template-columns: 43px minmax(0, 1fr);
+
+            }
+
+
+            .history-workout-date {
+
+                grid-column: 2;
+
+                text-align: left;
+
+                margin-top: -6px;
+
+            }
+
+
+            .calendar-panel {
+
+                padding: 18px;
+
+            }
+
+
+            .calendar-grid {
+
+                gap: 5px;
+
+            }
+
+
+            .calendar-day {
+
+                min-height: 35px;
+
+                border-radius: 8px;
+
+                font-size: 9px;
+
+            }
+
+
+            .consistency-container {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .consistency-circle {
+
+                width: 125px;
+
+                height: 125px;
+
+            }
+
+
+            .consistency-circle strong {
+
+                font-size: 32px;
+
+            }
+
+
+            .steps-content {
+
+                grid-template-columns: 1fr;
+
+                gap: 20px;
+
+            }
+
+
+            .step-ring {
+
+                margin-left: 0;
+
+            }
+
+
+            .motivation-card {
+
+                align-items: flex-start;
+
+                padding: 23px;
+
+                gap: 17px;
+
+            }
+
+
+            .motivation-icon {
+
+                width: 52px;
+
+                height: 52px;
+
+                border-radius: 15px;
+
+                font-size: 23px;
+
+            }
+
+        }
+
+
+        @media screen and (max-width: 480px) {
+
+            .summary-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .goal-progress {
+
+                grid-column: auto;
+
+            }
+
+
+            .target-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .weight-chart {
+
+                height: 200px;
+
+            }
+
+
+            .weight-bars {
+
+                gap: 5px;
+
+            }
+
+
+            .weight-bar-value {
+
+                max-width: 39px;
+
+            }
+
+
+            .calendar-weekday {
+
+                font-size: 7px;
+
+            }
+
+
+            .calendar-day {
+
+                min-height: 31px;
+
+            }
+
+
+            .motivation-card {
+
+                flex-direction: column;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="logo">
+     <img src="harshavigor-logo.png" alt="HarshaVigor">
+    </div>
+
+
+    <nav class="nav-links" id="mainNav">
+
+        <a href="home.html">
+            Home
+        </a>
+
+        <a href="index.html">
+            Dashboard
+        </a>
+
+        <a href="goals.html">
+            Goals
+        </a>
+
+        <a href="workouts.html">
+            Workouts
+        </a>
+
+        <a href="nutrition.html">
+            Nutrition
+        </a>
+
+        <a href="profile.html">
+            Profile
+        </a>
+
+        <a href="progress.html" class="active">
+            Progress
+        </a>
+
+    </nav>
+
+
+    <button
+        type="button"
+        class="mobile-menu-button"
+        id="mobileMenuButton"
+        aria-label="Open navigation"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+</header>
+
+
+<main class="progress-page">
+
+    <div class="progress-container">
+
+
+        <!-- =====================================================
+             HERO
+             ===================================================== -->
+
+        <section class="progress-hero">
+
+            <div class="progress-hero-content">
+
+                <div class="progress-label">
+                    YOUR FITNESS JOURNEY
+                </div>
+
+                <h1>
+                    Track Your
+                    <span>Progress.</span>
+                </h1>
+
+                <p class="progress-hero-description">
+                    Every workout, every meal and every improvement
+                    moves you closer to the stronger version of yourself.
+                </p>
+
+            </div>
+
+
+            <div class="progress-status">
+
+                <div class="progress-status-label">
+                    PROGRESS STATUS
+                </div>
+
+                <div
+                    class="progress-status-value"
+                    id="progressStatus"
+                >
+                    Building Momentum
+                </div>
+
+                <div class="progress-status-line"></div>
+
+                <div class="progress-status-bottom">
+
+                    <span class="progress-status-dot"></span>
+
+                    <span id="progressStatusText">
+                        Keep showing up
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SUMMARY
+             ===================================================== -->
+
+        <section>
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Progress Overview
+                    </h2>
+
+                    <p>
+                        Your current fitness journey at a glance.
+                    </p>
+
+                </div>
+
+                <span class="section-counter">
+                    LIVE DATA
+                </span>
+
+            </div>
+
+
+            <div class="summary-grid">
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        ⚖️
+                    </div>
+
+                    <div class="summary-info">
+
+                        <span>
+                            CURRENT WEIGHT
+                        </span>
+
+                        <strong id="currentWeight">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        🎯
+                    </div>
+
+                    <div class="summary-info">
+
+                        <span>
+                            STARTING WEIGHT
+                        </span>
+
+                        <strong id="startingWeight">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        📈
+                    </div>
+
+                    <div class="summary-info">
+
+                        <span>
+                            WEIGHT CHANGE
+                        </span>
+
+                        <strong id="weightChange">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        🎯
+                    </div>
+
+                    <div class="summary-info">
+
+                        <span>
+                            TARGET WEIGHT
+                        </span>
+
+                        <strong id="targetWeightProgress">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        📉
+                    </div>
+
+                    <div class="summary-info">
+
+                        <span>
+                            REMAINING
+                        </span>
+
+                        <strong id="remainingWeight">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">
+                        🏋️
+                    </div>
+
+                    <div class="summary-info">
+
+                        <span>
+                            WORKOUTS
+                        </span>
+
+                        <strong id="workoutCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="goal-progress">
+
+                    <div class="goal-progress-header">
+
+                        <span>
+                            WEIGHT GOAL PROGRESS
+                        </span>
+
+                        <strong id="goalProgressPercent">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-track">
+
+                        <div
+                            class="progress-fill"
+                            id="goalProgressFill"
+                        ></div>
+
+                    </div>
+
+
+                    <p
+                        class="goal-progress-text"
+                        id="goalProgressText"
+                    >
+                        Add your weight and target to track progress.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             WEIGHT PROGRESS
+             ===================================================== -->
+
+        <section class="progress-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <p class="card-label">
+                        BODY WEIGHT
+                    </p>
+
+                    <h2>
+                        Weight Progress
+                    </h2>
+
+                </div>
+
+                <span class="card-header-icon">
+                    ⚖️
+                </span>
+
+            </div>
+
+
+            <div class="weight-input-row">
+
+                <input
+                    type="number"
+                    id="weightInput"
+                    placeholder="Enter weight in kg"
+                    step="0.1"
+                    min="1"
+                    max="500"
+                >
+
+                <button
+                    type="button"
+                    class="premium-button"
+                    id="addWeightButton"
+                >
+                    Add Weight
+                </button>
+
+            </div>
+
+
+            <div
+                id="weightMessage"
+                class="weight-message"
+            ></div>
+
+
+            <div class="weight-chart">
+
+                <div
+                    id="weightBars"
+                    class="weight-bars"
+                ></div>
+
+            </div>
+
+
+            <div
+                id="weightHistory"
+                class="weight-history"
+            ></div>
+
+        </section>
+
+
+        <!-- =====================================================
+             NUTRITION
+             ===================================================== -->
+
+        <section class="progress-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <p class="card-label">
+                        DAILY TARGETS
+                    </p>
+
+                    <h2>
+                        Nutrition Overview
+                    </h2>
+
+                </div>
+
+                <span class="card-header-icon">
+                    🍽️
+                </span>
+
+            </div>
+
+
+            <div class="target-grid">
+
+
+                <div class="target-card">
+
+                    <div class="target-icon">
+                        🔥
+                    </div>
+
+                    <span>
+                        CALORIES
+                    </span>
+
+                    <strong id="targetCalories">
+                        —
+                    </strong>
+
+                    <small>
+                        kcal / day
+                    </small>
+
+                </div>
+
+
+                <div class="target-card">
+
+                    <div class="target-icon">
+                        🥩
+                    </div>
+
+                    <span>
+                        PROTEIN
+                    </span>
+
+                    <strong id="targetProtein">
+                        —
+                    </strong>
+
+                    <small>
+                        grams / day
+                    </small>
+
+                </div>
+
+
+                <div class="target-card">
+
+                    <div class="target-icon">
+                        🍚
+                    </div>
+
+                    <span>
+                        CARBS
+                    </span>
+
+                    <strong id="targetCarbs">
+                        —
+                    </strong>
+
+                    <small>
+                        grams / day
+                    </small>
+
+                </div>
+
+
+                <div class="target-card">
+
+                    <div class="target-icon">
+                        🥑
+                    </div>
+
+                    <span>
+                        FATS
+                    </span>
+
+                    <strong id="targetFats">
+                        —
+                    </strong>
+
+                    <small>
+                        grams / day
+                    </small>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             WORKOUT HISTORY
+             ===================================================== -->
+
+        <section class="progress-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <p class="card-label">
+                        TRAINING LOG
+                    </p>
+
+                    <h2>
+                        Workout History
+                    </h2>
+
+                </div>
+
+                <span class="card-header-icon">
+                    🏋️
+                </span>
+
+            </div>
+
+
+            <div
+                id="workoutHistory"
+                class="workout-history"
+            ></div>
+
+
+            <div class="calendar-panel">
+
+                <div class="calendar-heading">
+
+                    <p class="calendar-heading-label">
+                        CONSISTENCY
+                    </p>
+
+                    <h3>
+                        Workout Calendar
+                    </h3>
+
+                    <span>
+                        Your completed workout days.
+                    </span>
+
+                </div>
+
+
+                <div class="calendar-controls">
+
+                    <button
+                        type="button"
+                        id="previousMonth"
+                        aria-label="Previous month"
+                    >
+                        ←
+                    </button>
+
+
+                    <strong id="calendarMonth">
+                        —
+                    </strong>
+
+
+                    <button
+                        type="button"
+                        id="nextMonth"
+                        aria-label="Next month"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+
+                <div id="workoutCalendar"></div>
+
+
+                <div class="calendar-legend">
+
+                    <div>
+
+                        <span class="legend-box completed"></span>
+
+                        Workout completed
+
+                    </div>
+
+
+                    <div>
+
+                        <span class="legend-box today"></span>
+
+                        Today
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONSISTENCY
+             ===================================================== -->
+
+        <section class="progress-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <p class="card-label">
+                        CONSISTENCY
+                    </p>
+
+                    <h2>
+                        Your Training Streak
+                    </h2>
+
+                </div>
+
+                <span class="card-header-icon">
+                    🔥
+                </span>
+
+            </div>
+
+
+            <div class="consistency-container">
+
+                <div class="consistency-circle">
+
+                    <strong id="consistencyNumber">
+                        0
+                    </strong>
+
+                    <span>
+                        workouts
+                    </span>
+
+                </div>
+
+
+                <div class="consistency-info">
+
+                    <h3 id="consistencyTitle">
+                        Start Your Journey
+                    </h3>
+
+                    <p id="consistencyText">
+                        Complete your first workout
+                        to start building consistency.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STEPS
+             ===================================================== -->
+
+        <section class="progress-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <p class="card-label">
+                        DAILY ACTIVITY
+                    </p>
+
+                    <h2>
+                        Step Count
+                    </h2>
+
+                </div>
+
+                <span class="card-header-icon">
+                    👟
+                </span>
+
+            </div>
+
+
+            <div class="steps-content">
+
+                <div>
+
+                    <span class="steps-label">
+                        DAILY STEP GOAL
+                    </span>
+
+                    <div class="steps-heading">
+                        Keep moving forward
+                    </div>
+
+
+                    <div class="step-number">
+
+                        <strong id="progressStepNumber">
+                            0
+                        </strong>
+
+                        <span>
+                            / 6,000 steps
+                        </span>
+
+                    </div>
+
+
+                    <div class="step-track">
+
+                        <div
+                            class="step-fill"
+                            id="progressStepFill"
+                        ></div>
+
+                    </div>
+
+
+                    <p
+                        class="step-percent"
+                        id="progressStepPercent"
+                    >
+                        0% of your daily step goal
+                    </p>
+
+                </div>
+
+
+                <div class="step-ring">
+
+                    <div class="step-ring-inner">
+
+                        <strong id="stepRingPercent">
+                            0%
+                        </strong>
+
+                        <span>
+                            completed
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             MOTIVATION
+             ===================================================== -->
+
+        <section class="motivation-card">
+
+            <div class="motivation-icon">
+                🔥
+            </div>
+
+
+            <div>
+
+                <p>
+                    KEEP GOING
+                </p>
+
+                <h2 id="motivationTitle">
+                    Progress is built one workout at a time.
+                </h2>
+
+                <span id="motivationText">
+                    Stay consistent and trust the process.
+                </span>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       STORED DATA
+       ========================================================= */
+
+    let weightHistory = [];
+
+    let workoutHistory = [];
+
+    let workoutCount = 0;
+
+    let workoutDates = [];
+
+    let calendarDate = new Date();
+
+
+    function safeJSONParse(value, fallback) {
+
+        try {
+
+            const parsed = JSON.parse(value);
+
+            return parsed || fallback;
+
+        } catch (error) {
+
+            return fallback;
+
+        }
+
+    }
+
+
+    weightHistory = safeJSONParse(
+        localStorage.getItem("fittrackWeightHistory"),
+        []
+    );
+
+
+    workoutHistory = safeJSONParse(
+        localStorage.getItem("fittrackWorkoutHistory"),
+        []
+    );
+
+
+    workoutCount =
+        parseInt(
+            localStorage.getItem("fittrackWorkoutCount"),
+            10
+        ) || 0;
+
+workoutDates = safeJSONParse(
+    localStorage.getItem("fittrackWorkoutDates"),
+    []
+);
+
+if (!Array.isArray(workoutDates)) {
+    workoutDates = [];
+}
+
+workoutDates = workoutDates
+    .filter(function(date) {
+        return typeof date === "string" &&
+               /^\d{4}-\d{2}-\d{2}$/.test(date);
+    })
+    .filter(function(date, index, array) {
+        return array.indexOf(date) === index;
+    });
+
+localStorage.setItem(
+    "fittrackWorkoutDates",
+    JSON.stringify(workoutDates)
+);
+
+
+    /* =========================================================
+       WEIGHT SUMMARY
+       ========================================================= */
+
+    function updateWeightSummary() {
+
+        const currentElement =
+            document.getElementById("currentWeight");
+
+        const startingElement =
+            document.getElementById("startingWeight");
+
+        const changeElement =
+            document.getElementById("weightChange");
+
+
+        if (!Array.isArray(weightHistory) || weightHistory.length === 0) {
+
+            currentElement.textContent = "—";
+
+            startingElement.textContent = "—";
+
+            changeElement.textContent = "—";
+
+            return;
+
+        }
+
+
+        const starting =
+            parseFloat(weightHistory[0].weight);
+
+
+        const current =
+            parseFloat(
+                weightHistory[
+                    weightHistory.length - 1
+                ].weight
+            );
+
+
+        if (isNaN(starting) || isNaN(current)) {
+
+            currentElement.textContent = "—";
+
+            startingElement.textContent = "—";
+
+            changeElement.textContent = "—";
+
+            return;
+
+        }
+
+
+        const change =
+            current - starting;
+
+
+        currentElement.textContent =
+            current.toFixed(1) + " kg";
+
+
+        startingElement.textContent =
+            starting.toFixed(1) + " kg";
+
+
+        changeElement.textContent =
+            change > 0
+                ? "+" + change.toFixed(1) + " kg"
+                : change.toFixed(1) + " kg";
+
+    }
+
+
+    /* =========================================================
+       WEIGHT HISTORY
+       ========================================================= */
+
+    function displayWeightHistory() {
+
+        const history =
+            document.getElementById("weightHistory");
+
+        const bars =
+            document.getElementById("weightBars");
+
+
+        history.innerHTML = "";
+
+        bars.innerHTML = "";
+
+
+        if (!Array.isArray(weightHistory) || weightHistory.length === 0) {
+
+            history.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div class="empty-state-icon">
+                        ⚖️
+                    </div>
+
+                    <h3>
+                        No weight entries yet
+                    </h3>
+
+                    <p>
+                        Add your first weight above
+                        to start tracking your progress.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        const recent =
+            weightHistory
+                .slice()
+                .reverse()
+                .slice(0, 8);
+
+
+        recent.forEach(function(entry) {
+
+            const item =
+                document.createElement("div");
+
+
+            item.className =
+                "weight-history-item";
+
+
+            const weight =
+                parseFloat(entry.weight);
+
+
+            item.innerHTML = `
+
+                <div class="weight-history-icon">
+                    ⚖️
+                </div>
+
+                <div class="weight-history-info">
+
+                    <strong>
+                        ${
+                            isNaN(weight)
+                                ? "—"
+                                : weight.toFixed(1) + " kg"
+                        }
+                    </strong>
+
+                    <span>
+                        ${entry.date || "Recorded"}
+                    </span>
+
+                </div>
+
+            `;
+
+
+            history.appendChild(item);
+
+        });
+
+
+        createWeightBars();
+
+    }
+
+
+    /* =========================================================
+       WEIGHT BARS
+       ========================================================= */
+
+    function createWeightBars() {
+
+        const barsContainer =
+            document.getElementById("weightBars");
+
+
+        barsContainer.innerHTML = "";
+
+
+        const recent =
+            weightHistory.slice(-8);
+
+
+        if (recent.length === 0) {
+            return;
+        }
+
+
+        const values =
+            recent
+                .map(function(entry) {
+                    return parseFloat(entry.weight);
+                })
+                .filter(function(value) {
+                    return !isNaN(value);
+                });
+
+
+        if (values.length === 0) {
+            return;
+        }
+
+
+        const min =
+            Math.min.apply(null, values);
+
+
+        const max =
+            Math.max.apply(null, values);
+
+
+        recent.forEach(function(entry) {
+
+            const value =
+                parseFloat(entry.weight);
+
+
+            if (isNaN(value)) {
+                return;
+            }
+
+
+            let height;
+
+
+            if (max === min) {
+
+                height = 60;
+
+            } else {
+
+                height =
+                    30 +
+                    (
+                        (value - min) /
+                        (max - min)
+                    ) * 70;
+
+            }
+
+
+            const bar =
+                document.createElement("div");
+
+
+            bar.className =
+                "weight-bar";
+
+
+            bar.innerHTML = `
+
+                <div
+                    class="weight-bar-value"
+                    style="height:${height}%"
+                >
+
+                    <span>
+                        ${value.toFixed(1)}
+                    </span>
+
+                </div>
+
+                <small>
+                    ${entry.date || ""}
+                </small>
+
+            `;
+
+
+            barsContainer.appendChild(bar);
+
+        });
+
+    }
+
+
+    /* =========================================================
+       ADD WEIGHT
+       ========================================================= */
+
+    function addWeight() {
+
+        const input =
+            document.getElementById("weightInput");
+
+
+        const message =
+            document.getElementById("weightMessage");
+
+
+        const weight =
+            parseFloat(input.value);
+
+
+        if (
+            isNaN(weight) ||
+            weight <= 0 ||
+            weight > 500
+        ) {
+
+            message.textContent =
+                "Please enter a valid weight.";
+
+            message.className =
+                "weight-message error";
+
+            return;
+
+        }
+
+
+        weightHistory.push({
+
+            weight: weight,
+
+            date:
+                new Date()
+                    .toLocaleDateString("en-IN")
+
+        });
+
+
+        localStorage.setItem(
+            "fittrackWeightHistory",
+            JSON.stringify(weightHistory)
+        );
+
+
+        input.value = "";
+
+
+        message.textContent =
+            "Weight added successfully.";
+
+        message.className =
+            "weight-message success";
+
+
+        updateWeightSummary();
+
+        displayWeightHistory();
+
+        updateTargetWeight();
+
+        updateRemainingWeight();
+
+        updateGoalProgress();
+
+        updateProgressStatus();
+
+
+        setTimeout(function() {
+
+            message.textContent = "";
+
+        }, 2500);
+
+    }
+
+
+    /* =========================================================
+       NUTRITION TARGETS
+       ========================================================= */
+
+    function displayNutritionTargets() {
+
+        const calories =
+            localStorage.getItem("fittrackCalories");
+
+
+        const protein =
+            localStorage.getItem("fittrackProtein");
+
+
+        const carbs =
+            localStorage.getItem("fittrackCarbs");
+
+
+        const fats =
+            localStorage.getItem("fittrackFats");
+
+
+        document.getElementById(
+            "targetCalories"
+        ).textContent =
+            calories || "—";
+
+
+        document.getElementById(
+            "targetProtein"
+        ).textContent =
+            protein
+                ? protein + " g"
+                : "—";
+
+
+        document.getElementById(
+            "targetCarbs"
+        ).textContent =
+            carbs
+                ? carbs + " g"
+                : "—";
+
+
+        document.getElementById(
+            "targetFats"
+        ).textContent =
+            fats
+                ? fats + " g"
+                : "—";
+
+    }
+
+
+    /* =========================================================
+       WORKOUT HISTORY
+       ========================================================= */
+
+    function displayWorkoutHistory() {
+
+        const container =
+            document.getElementById("workoutHistory");
+
+
+        container.innerHTML = "";
+
+
+        if (
+            !Array.isArray(workoutHistory) ||
+            workoutHistory.length === 0
+        ) {
+
+            container.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div class="empty-state-icon">
+                        🏋️
+                    </div>
+
+                    <h3>
+                        No workouts completed yet
+                    </h3>
+
+                    <p>
+                        Start your first workout and
+                        your training history will appear here.
+                    </p>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        const recent =
+            workoutHistory
+                .slice()
+                .reverse()
+                .slice(0, 10);
+
+
+        recent.forEach(function(workout) {
+
+            const item =
+                document.createElement("div");
+
+
+            item.className =
+                "workout-history-item";
+
+
+            const name =
+                workout.name || "Workout";
+
+
+            const level =
+                workout.level || "Training";
+
+
+            const type =
+                workout.type || "Session";
+
+
+            const date =
+                workout.date || "Completed";
+
+
+            item.innerHTML = `
+
+                <div class="history-workout-icon">
+                    🏋️
+                </div>
+
+                <div class="history-workout-info">
+
+                    <h3>
+                        ${name}
+                    </h3>
+
+                    <p>
+                        ${level} • ${type}
+                    </p>
+
+                </div>
+
+                <div class="history-workout-date">
+
+                    <span>
+                        ${date}
+                    </span>
+
+                    <small>
+                        COMPLETED
+                    </small>
+
+                </div>
+
+            `;
+
+
+            container.appendChild(item);
+
+        });
+
+    }
+
+
+    /* =========================================================
+       WORKOUT COUNT
+       ========================================================= */
+
+    function updateWorkoutCount() {
+
+        document.getElementById(
+            "workoutCount"
+        ).textContent =
+            workoutCount;
+
+    }
+
+
+    /* =========================================================
+       CONSISTENCY
+       ========================================================= */
+
+    function updateConsistency() {
+
+        const number =
+            document.getElementById(
+                "consistencyNumber"
+            );
+
+
+        const title =
+            document.getElementById(
+                "consistencyTitle"
+            );
+
+
+        const text =
+            document.getElementById(
+                "consistencyText"
+            );
+
+
+        number.textContent =
+            workoutCount;
+
+
+        if (workoutCount === 0) {
+
+            title.textContent =
+                "Start Your Journey";
+
+            text.textContent =
+                "Complete your first workout to start building consistency.";
+
+        }
+
+        else if (workoutCount < 3) {
+
+            title.textContent =
+                "Great Start!";
+
+            text.textContent =
+                "You're building momentum. Keep showing up.";
+
+        }
+
+        else if (workoutCount < 7) {
+
+            title.textContent =
+                "Building Momentum!";
+
+            text.textContent =
+                "You're becoming more consistent. Keep pushing forward.";
+
+        }
+
+        else if (workoutCount < 15) {
+
+            title.textContent =
+                "Strong Consistency!";
+
+            text.textContent =
+                "Excellent work. Your consistency is starting to compound.";
+
+        }
+
+        else {
+
+            title.textContent =
+                "You're On Fire! 🔥";
+
+            text.textContent =
+                "Amazing commitment. Keep building the stronger version of yourself.";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       MOTIVATION
+       ========================================================= */
+
+    function updateMotivation() {
+
+        const title =
+            document.getElementById(
+                "motivationTitle"
+            );
+
+
+        const text =
+            document.getElementById(
+                "motivationText"
+            );
+
+
+        if (workoutCount === 0) {
+
+            title.textContent =
+                "Your first workout starts everything.";
+
+            text.textContent =
+                "Don't wait for motivation. Build the habit.";
+
+        }
+
+        else if (workoutCount < 5) {
+
+            title.textContent =
+                "You're building the foundation.";
+
+            text.textContent =
+                "Stay consistent and let the results follow.";
+
+        }
+
+        else if (workoutCount < 10) {
+
+            title.textContent =
+                "Small improvements become big results.";
+
+            text.textContent =
+                "Keep training, recovering and progressing.";
+
+        }
+
+        else {
+
+            title.textContent =
+                "You've already proven you can stay consistent.";
+
+            text.textContent =
+                "Now keep going and become even stronger.";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       TARGET WEIGHT
+       ========================================================= */
+
+    function updateTargetWeight() {
+
+        const target =
+            parseFloat(
+                localStorage.getItem(
+                    "fittrackTargetWeight"
+                )
+            );
+
+
+        const element =
+            document.getElementById(
+                "targetWeightProgress"
+            );
+
+
+        if (isNaN(target)) {
+
+            element.textContent =
+                "—";
+
+            return;
+
+        }
+
+
+        element.textContent =
+            target.toFixed(1) + " kg";
+
+    }
+
+
+    /* =========================================================
+       REMAINING WEIGHT
+       ========================================================= */
+
+    function updateRemainingWeight() {
+
+        const target =
+            parseFloat(
+                localStorage.getItem(
+                    "fittrackTargetWeight"
+                )
+            );
+
+
+        const element =
+            document.getElementById(
+                "remainingWeight"
+            );
+
+
+        if (
+            weightHistory.length === 0 ||
+            isNaN(target)
+        ) {
+
+            element.textContent =
+                "—";
+
+            return;
+
+        }
+
+
+        const current =
+            parseFloat(
+                weightHistory[
+                    weightHistory.length - 1
+                ].weight
+            );
+
+
+        if (isNaN(current)) {
+
+            element.textContent =
+                "—";
+
+            return;
+
+        }
+
+
+        const remaining =
+            target - current;
+
+
+        if (Math.abs(remaining) < 0.05) {
+
+            element.textContent =
+                "Goal Reached";
+
+        }
+
+        else {
+
+            element.textContent =
+                Math.abs(remaining).toFixed(1) +
+                " kg";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       GOAL PROGRESS
+       ========================================================= */
+
+    function updateGoalProgress() {
+
+        const percentElement =
+            document.getElementById(
+                "goalProgressPercent"
+            );
+
+
+        const fillElement =
+            document.getElementById(
+                "goalProgressFill"
+            );
+
+
+        const textElement =
+            document.getElementById(
+                "goalProgressText"
+            );
+
+
+        if (
+            !Array.isArray(weightHistory) ||
+            weightHistory.length === 0
+        ) {
+
+            percentElement.textContent =
+                "0%";
+
+            fillElement.style.width =
+                "0%";
+
+            textElement.textContent =
+                "Add your weight and target to track progress.";
+
+            return;
+
+        }
+
+
+        const starting =
+            parseFloat(
+                weightHistory[0].weight
+            );
+
+
+        const current =
+            parseFloat(
+                weightHistory[
+                    weightHistory.length - 1
+                ].weight
+            );
+
+
+        const target =
+            parseFloat(
+                localStorage.getItem(
+                    "fittrackTargetWeight"
+                )
+            );
+
+
+        if (
+            isNaN(starting) ||
+            isNaN(current) ||
+            isNaN(target) ||
+            starting === target
+        ) {
+
+            percentElement.textContent =
+                "0%";
+
+            fillElement.style.width =
+                "0%";
+
+            textElement.textContent =
+                "Add your weight and target to track progress.";
+
+            return;
+
+        }
+
+
+        let progress =
+            (
+                (current - starting) /
+                (target - starting)
+            ) * 100;
+
+
+        progress =
+            Math.max(
+                0,
+                Math.min(
+                    100,
+                    progress
+                )
+            );
+
+
+        const rounded =
+            Math.round(progress);
+
+
+        percentElement.textContent =
+            rounded + "%";
+
+
+        fillElement.style.width =
+            progress + "%";
+
+
+        if (progress >= 100) {
+
+            textElement.textContent =
+                "Goal reached! Keep going strong. 🎯";
+
+        }
+
+        else {
+
+            textElement.textContent =
+                "You're " +
+                rounded +
+                "% of the way to your target.";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       STEPS
+       ========================================================= */
+
+    function updateStepCount() {
+
+        const steps =
+            parseInt(
+                localStorage.getItem(
+                    "fittrackSteps"
+                ),
+                10
+            ) || 0;
+
+
+        const goal =
+            6000;
+
+
+        const percent =
+            Math.min(
+                100,
+                Math.max(
+                    0,
+                    (steps / goal) * 100
+                )
+            );
+
+
+        const rounded =
+            Math.round(percent);
+
+
+        document.getElementById(
+            "progressStepNumber"
+        ).textContent =
+            steps.toLocaleString();
+
+
+        document.getElementById(
+            "progressStepFill"
+        ).style.width =
+            percent + "%";
+
+
+        document.getElementById(
+            "progressStepPercent"
+        ).textContent =
+            rounded +
+            "% of your daily step goal";
+
+
+        document.getElementById(
+            "stepRingPercent"
+        ).textContent =
+            rounded + "%";
+
+    }
+
+
+    /* =========================================================
+       PROGRESS STATUS
+       ========================================================= */
+
+    function updateProgressStatus() {
+
+        const status =
+            document.getElementById(
+                "progressStatus"
+            );
+
+
+        const statusText =
+            document.getElementById(
+                "progressStatusText"
+            );
+
+
+        if (workoutCount === 0) {
+
+            status.textContent =
+                "Ready To Begin";
+
+            statusText.textContent =
+                "Your journey starts today";
+
+        }
+
+        else if (workoutCount < 5) {
+
+            status.textContent =
+                "Building Momentum";
+
+            statusText.textContent =
+                "Keep showing up";
+
+        }
+
+        else if (workoutCount < 10) {
+
+            status.textContent =
+                "Making Progress";
+
+            statusText.textContent =
+                "Your consistency is growing";
+
+        }
+
+        else {
+
+            status.textContent =
+                "Strong Momentum";
+
+            statusText.textContent =
+                "Keep pushing forward";
+
+        }
+
+    }
+
+
+    /* =========================================================
+       CALENDAR
+       ========================================================= */
+
+    function formatDateKey(
+        year,
+        month,
+        day
+    ) {
+
+        return (
+            year +
+            "-" +
+            String(month + 1).padStart(2, "0") +
+            "-" +
+            String(day).padStart(2, "0")
+        );
+
+    }
+
+
+    function drawCalendar() {
+
+        const container =
+            document.getElementById(
+                "workoutCalendar"
+            );
+
+
+        const year =
+            calendarDate.getFullYear();
+
+
+        const month =
+            calendarDate.getMonth();
+
+
+        const firstDay =
+            new Date(
+                year,
+                month,
+                1
+            );
+
+
+        const daysInMonth =
+            new Date(
+                year,
+                month + 1,
+                0
+            ).getDate();
+
+
+        const today =
+            new Date();
+
+
+        const todayKey =
+            formatDateKey(
+                today.getFullYear(),
+                today.getMonth(),
+                today.getDate()
+            );
+
+
+        const names = [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat"
+        ];
+
+
+        let html =
+            '<div class="calendar-grid">';
+
+
+        for (
+            let i = 0;
+            i < 7;
+            i++
+        ) {
+
+            html +=
+                '<div class="calendar-weekday">' +
+                names[i] +
+                '</div>';
+
+        }
+
+
+        for (
+            let blank = 0;
+            blank < firstDay.getDay();
+            blank++
+        ) {
+
+            html +=
+                '<div class="calendar-day empty"></div>';
+
+        }
+
+
+        for (
+            let day = 1;
+            day <= daysInMonth;
+            day++
+        ) {
+
+            const dateKey =
+                formatDateKey(
+                    year,
+                    month,
+                    day
+                );
+
+
+            const completed =
+                workoutDates.indexOf(
+                    dateKey
+                ) !== -1;
+
+
+            const isToday =
+                dateKey === todayKey;
+
+
+            let classes =
+                "calendar-day";
+
+
+         if (completed && !isToday) {
+    classes += " completed";
+}
+
+if (isToday) {
+    classes += " today";
+}
+
+            html +=
+                '<div class="' +
+                classes +
+                '">' +
+                day +
+                '</div>';
+
+        }
+
+
+        html +=
+            "</div>";
+
+
+        container.innerHTML =
+            html;
+
+
+        document.getElementById(
+            "calendarMonth"
+        ).textContent =
+            calendarDate.toLocaleString(
+                "en-IN",
+                {
+                    month: "long",
+                    year: "numeric"
+                }
+            );
+
+    }
+
+
+    /* =========================================================
+       MOBILE NAVIGATION
+       ========================================================= */
+
+    function toggleMobileMenu() {
+
+        const menu =
+            document.getElementById(
+                "mainNav"
+            );
+
+
+        const button =
+            document.getElementById(
+                "mobileMenuButton"
+            );
+
+
+        if (!menu || !button) {
+            return;
+        }
+
+
+        menu.classList.toggle(
+            "mobile-open"
+        );
+
+
+        const isOpen =
+            menu.classList.contains(
+                "mobile-open"
+            );
+
+
+        button.setAttribute(
+            "aria-expanded",
+            isOpen
+                ? "true"
+                : "false"
+        );
+
+
+        button.setAttribute(
+            "aria-label",
+            isOpen
+                ? "Close navigation"
+                : "Open navigation"
+        );
+
+
+        button.textContent =
+            isOpen
+                ? "×"
+                : "☰";
+
+    }
+
+
+    /* =========================================================
+       ACTIVE NAVIGATION
+       ========================================================= */
+
+    function setActiveNavigation() {
+
+        const currentPage =
+            window.location.pathname
+                .split("/")
+                .pop() ||
+            "index.html";
+
+
+        const navigationLinks =
+            document.querySelectorAll(
+                ".nav-links a"
+            );
+
+
+        navigationLinks.forEach(function(link) {
+
+            const href =
+                link.getAttribute("href");
+
+
+            link.classList.toggle(
+                "active",
+                href === currentPage
+            );
+
+        });
+
+    }
+
+
+    /* =========================================================
+       EVENT LISTENERS
+       ========================================================= */
+
+    document.getElementById(
+        "mobileMenuButton"
+    ).addEventListener(
+        "click",
+        toggleMobileMenu
+    );
+
+
+    document.getElementById(
+        "addWeightButton"
+    ).addEventListener(
+        "click",
+        addWeight
+    );
+
+
+    document.getElementById(
+        "weightInput"
+    ).addEventListener(
+        "keydown",
+        function(event) {
+
+            if (event.key === "Enter") {
+
+                addWeight();
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "previousMonth"
+    ).addEventListener(
+        "click",
+        function() {
+
+            calendarDate.setMonth(
+                calendarDate.getMonth() - 1
+            );
+
+            drawCalendar();
+
+        }
+    );
+
+
+    document.getElementById(
+        "nextMonth"
+    ).addEventListener(
+        "click",
+        function() {
+
+            calendarDate.setMonth(
+                calendarDate.getMonth() + 1
+            );
+
+            drawCalendar();
+
+        }
+    );
+
+
+    /* =========================================================
+       INITIALIZE
+       ========================================================= */
+
+    updateWeightSummary();
+
+    displayWeightHistory();
+
+    displayNutritionTargets();
+
+    displayWorkoutHistory();
+
+    updateWorkoutCount();
+
+    updateConsistency();
+
+    updateMotivation();
+
+    updateTargetWeight();
+
+    updateRemainingWeight();
+
+    updateGoalProgress();
+
+    updateStepCount();
+
+    updateProgressStatus();
+
+    drawCalendar();
+
+    setActiveNavigation();
+
+</script>
+
+
+</body>
+
+</html>

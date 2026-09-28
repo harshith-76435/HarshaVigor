@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>HarshaVigor - Workout Session</title>
+
+    <link rel="stylesheet"
+        href="css/style.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="logo">
+    <img src="harshavigor-logo.png" alt="HarshaVigor">
+</div>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="goals.html">Goals</a>
+            <a href="workouts.html">Workouts</a>
+            <a href="nutrition.html">Nutrition</a>
+            <a href="profile.html">Profile</a>
+            <a href="progress.html">Progress</a>
+        </nav>
+
+    </header>
+
+
+    <main class="session-section">
+
+
+        <!-- SESSION HEADER -->
+
+        <section class="session-heading">
+
+            <p class="workout-label">
+                WORKOUT SESSION
+            </p>
+
+            <h1 id="sessionTitle">
+                Your Workout
+            </h1>
+
+            <p id="sessionSubtitle">
+                Complete each set and track your progress.
+            </p>
+
+        </section>
+
+
+        <!-- OVERALL PROGRESS -->
+
+        <div class="session-progress-card">
+
+            <div class="session-progress-top">
+
+                <span>
+                    SESSION PROGRESS
+                </span>
+
+                <strong id="overallProgress">
+                    0%
+                </strong>
+
+            </div>
+
+            <div class="session-progress-track">
+
+                <div
+                    class="session-progress-fill"
+                    id="overallProgressFill">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EXERCISES -->
+
+        <section
+            class="session-exercises"
+            id="sessionExercises">
+        </section>
+
+
+        <!-- REST TIMER -->
+
+        <section class="rest-timer">
+
+            <p>
+                REST TIMER
+            </p>
+
+            <strong id="timerDisplay">
+                00:00
+            </strong>
+
+            <span id="timerStatus">
+                Choose your rest duration.
+            </span>
+
+
+            <div class="timer-buttons">
+
+                <button onclick="startTimer(60)">
+                    60 sec
+                </button>
+
+                <button onclick="startTimer(90)">
+                    90 sec
+                </button>
+
+                <button onclick="startTimer(120)">
+                    120 sec
+                </button>
+
+                <button
+                    class="timer-stop"
+                    onclick="stopTimer()">
+
+                    Stop
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINISH -->
+
+        <div class="finish-section">
+
+            <button
+                class="finish-workout-button"
+                onclick="finishWorkout()">
+
+                Finish Workout ✓
+
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+    <script>
+
+        /* ==========================================
+           WORKOUT INFORMATION
+           ========================================== */
+
+        const workoutName =
+            localStorage.getItem(
+                "fittrackWorkoutName"
+            ) || "Workout";
+
+
+        const workoutType =
+            localStorage.getItem(
+                "fittrackWorkoutType"
+            ) || "push";
+
+
+        const savedLevel =
+            localStorage.getItem(
+                "fittrackLevel"
+            ) || "Beginner 🟢";
+
+
+        const level =
+            savedLevel
+                .replace(" 🟢", "")
+                .replace(" 🔵", "")
+                .replace(" 🔴", "")
+                .trim();
+
+
+        document.getElementById(
+            "sessionTitle"
+        ).textContent =
+            workoutName;
+
+
+        document.getElementById(
+            "sessionSubtitle"
+        ).textContent =
+            level +
+            " training • Complete each set with controlled technique.";
+
+
+        /* ==========================================
+           EXERCISE DATABASE
+           ========================================== */
+
+        const exercises = {
+
+            Beginner: {
+
+                push: [
+                    ["Machine Chest Press", 3, "8–12", "90 sec"],
+                    ["Seated Shoulder Press", 3, "8–12", "90 sec"],
+                    ["Cable Chest Fly", 2, "10–15", "60 sec"],
+                    ["Rope Triceps Pushdown", 3, "10–15", "60 sec"]
+                ],
+
+                pull: [
+                    ["Lat Pulldown", 3, "8–12", "90 sec"],
+                    ["Seated Cable Row", 3, "8–12", "90 sec"],
+                    ["Face Pull", 2, "12–15", "60 sec"],
+                    ["Dumbbell Curl", 3, "10–15", "60 sec"]
+                ],
+
+                legs: [
+                    ["Leg Press", 3, "8–12", "120 sec"],
+                    ["Leg Extension", 3, "10–15", "60 sec"],
+                    ["Leg Curl", 3, "10–15", "60 sec"],
+                    ["Standing Calf Raises", 3, "12–20", "60 sec"]
+                ]
+
+            },
+
+
+            Intermediate: {
+
+                push: [
+                    ["Incline Dumbbell Press", 3, "6–10", "120 sec"],
+                    ["Flat Bench Press", 3, "6–10", "120 sec"],
+                    ["Dumbbell Shoulder Press", 3, "8–12", "90 sec"],
+                    ["Rope Triceps Pushdown", 3, "10–15", "60 sec"]
+                ],
+
+                pull: [
+                    ["Lat Pulldown", 3, "8–12", "90 sec"],
+                    ["Barbell Row", 3, "6–10", "120 sec"],
+                    ["Face Pull", 3, "12–15", "60 sec"],
+                    ["EZ-Bar Curl", 3, "8–12", "60 sec"]
+                ],
+
+                legs: [
+                    ["Barbell Squat", 3, "6–10", "150 sec"],
+                    ["Romanian Deadlift", 3, "8–12", "120 sec"],
+                    ["Leg Press", 3, "10–15", "90 sec"],
+                    ["Standing Calf Raises", 4, "12–20", "60 sec"]
+                ]
+
+            },
+
+
+            Advanced: {
+
+                push: [
+                    ["Incline Barbell Press", 4, "5–8", "150 sec"],
+                    ["Weighted Dips", 3, "6–10", "120 sec"],
+                    ["Seated Dumbbell Shoulder Press", 3, "6–10", "120 sec"],
+                    ["Overhead Triceps Extension", 3, "8–12", "60 sec"]
+                ],
+
+                pull: [
+                    ["Weighted Pull-Ups", 4, "5–8", "150 sec"],
+                    ["Pendlay Row", 4, "5–8", "150 sec"],
+                    ["Chest-Supported Row", 3, "8–12", "90 sec"],
+                    ["EZ-Bar Preacher Curl", 3, "8–12", "60 sec"]
+                ],
+
+                legs: [
+                    ["Front Squat", 4, "5–8", "150 sec"],
+                    ["Romanian Deadlift", 4, "6–10", "120 sec"],
+                    ["Bulgarian Split Squat", 3, "8–12", "90 sec"],
+                    ["Seated Calf Raises", 4, "12–20", "60 sec"]
+                ]
+
+            }
+
+        };
+
+
+        /* ==========================================
+           FULL BODY
+           ========================================== */
+
+        function getFullBody(type) {
+
+            const data =
+                exercises[level] ||
+                exercises.Beginner;
+
+
+            if (type === "fullbodyA") {
+
+                return [
+
+                    data.legs[0],
+                    data.push[0],
+                    data.pull[0],
+                    data.push[1],
+                    data.pull[3]
+
+                ];
+
+            }
+
+
+            if (type === "fullbodyB") {
+
+                return [
+
+                    data.legs[1],
+                    data.push[1],
+                    data.pull[1],
+                    data.push[2],
+                    data.pull[3]
+
+                ];
+
+            }
+
+
+            return [
+
+                data.legs[2],
+                data.push[0],
+                data.pull[1],
+                data.push[3],
+                data.legs[3]
+
+            ];
+
+        }
+
+
+        /* ==========================================
+           GET CURRENT EXERCISES
+           ========================================== */
+
+        function getCurrentExercises() {
+
+            if (
+                workoutType === "fullbodyA"
+            ) {
+
+                return getFullBody(
+                    "fullbodyA"
+                );
+
+            }
+
+
+            if (
+                workoutType === "fullbodyB"
+            ) {
+
+                return getFullBody(
+                    "fullbodyB"
+                );
+
+            }
+
+
+            if (
+                workoutType === "fullbodyC"
+            ) {
+
+                return getFullBody(
+                    "fullbodyC"
+                );
+
+            }
+
+
+            const data =
+                exercises[level] ||
+                exercises.Beginner;
+
+
+            return data[
+                workoutType
+            ] || data.push;
+
+        }
+
+
+        const currentExercises =
+            getCurrentExercises();
+
+
+        /* ==========================================
+           SET TRACKING
+           ========================================== */
+
+        const completedSets =
+            currentExercises.map(
+                exercise =>
+                    Array(
+                        exercise[1]
+                    ).fill(false)
+            );
+
+
+        const totalSets =
+            currentExercises.reduce(
+                (
+                    total,
+                    exercise
+                ) =>
+                    total +
+                    exercise[1],
+                0
+            );
+
+
+        let completedTotal = 0;
+
+
+        /* ==========================================
+           DISPLAY EXERCISES
+           ========================================== */
+
+        const container =
+            document.getElementById(
+                "sessionExercises"
+            );
+
+
+        currentExercises.forEach(
+            (
+                exercise,
+                exerciseIndex
+            ) => {
+
+
+                const name =
+                    exercise[0];
+
+
+                const sets =
+                    exercise[1];
+
+
+                const reps =
+                    exercise[2];
+
+
+                const rest =
+                    exercise[3];
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "session-exercise-card";
+
+
+                let buttons = "";
+
+
+                for (
+                    let i = 0;
+                    i < sets;
+                    i++
+                ) {
+
+                    buttons += `
+
+                        <button
+                            class="set-button"
+                            id="set-${exerciseIndex}-${i}"
+                            onclick="
+                                completeSet(
+                                    ${exerciseIndex},
+                                    ${i}
+                                )
+                            ">
+
+                            Set ${i + 1}
+
+                        </button>
+
+                    `;
+
+                }
+
+
+                card.innerHTML = `
+
+                    <div class="exercise-number">
+
+                        ${exerciseIndex + 1}
+
+                    </div>
+
+
+                    <div class="session-exercise-info">
+
+                        <h2>
+                            ${name}
+                        </h2>
+
+
+                        <div class="session-details">
+
+                            <span>
+                                ${sets} Sets
+                            </span>
+
+                            <span>
+                                ${reps} Reps
+                            </span>
+
+                            <span>
+                                ${rest} Rest
+                            </span>
+
+                        </div>
+
+
+                        <div class="exercise-set-progress">
+
+                            <span>
+                                Exercise Progress
+                            </span>
+
+                            <strong
+                                id="exercise-count-${exerciseIndex}">
+                                0 / ${sets}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="exercise-mini-bar">
+
+                            <div
+                                class="exercise-mini-fill"
+                                id="exercise-fill-${exerciseIndex}">
+                            </div>
+
+                        </div>
+
+
+                        <div class="set-buttons">
+
+                            ${buttons}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        /* ==========================================
+           COMPLETE SET
+           ========================================== */
+
+        function completeSet(
+            exerciseIndex,
+            setIndex
+        ) {
+
+
+            if (
+                completedSets[
+                    exerciseIndex
+                ][setIndex]
+            ) {
+
+                return;
+
+            }
+
+
+            completedSets[
+                exerciseIndex
+            ][setIndex] = true;
+
+
+            completedTotal++;
+
+
+            const button =
+                document.getElementById(
+                    `set-${exerciseIndex}-${setIndex}`
+                );
+
+
+            button.classList.add(
+                "completed"
+            );
+
+
+            button.textContent =
+                "✓ Set " +
+                (
+                    setIndex + 1
+                );
+
+
+            updateExerciseProgress(
+                exerciseIndex
+            );
+
+
+            updateOverallProgress();
+
+
+            const restSeconds =
+                parseRestSeconds(
+                    currentExercises[
+                        exerciseIndex
+                    ][3]
+                );
+
+
+            startTimer(
+                restSeconds
+            );
+
+        }
+
+
+        /* ==========================================
+           EXERCISE PROGRESS
+           ========================================== */
+
+        function updateExerciseProgress(
+            exerciseIndex
+        ) {
+
+
+            const completed =
+                completedSets[
+                    exerciseIndex
+                ].filter(
+                    value => value
+                ).length;
+
+
+            const total =
+                completedSets[
+                    exerciseIndex
+                ].length;
+
+
+            const percentage =
+                (
+                    completed /
+                    total
+                ) * 100;
+
+
+            document.getElementById(
+                `exercise-count-${exerciseIndex}`
+            ).textContent =
+                completed +
+                " / " +
+                total;
+
+
+            document.getElementById(
+                `exercise-fill-${exerciseIndex}`
+            ).style.width =
+                percentage + "%";
+
+
+            if (
+                completed === total
+            ) {
+
+                const cards =
+                    document.querySelectorAll(
+                        ".session-exercise-card"
+                    );
+
+
+                cards[
+                    exerciseIndex
+                ].classList.add(
+                    "exercise-complete"
+                );
+
+            }
+
+        }
+
+
+        /* ==========================================
+           OVERALL PROGRESS
+           ========================================== */
+
+        function updateOverallProgress() {
+
+
+            const percentage =
+                Math.round(
+                    (
+                        completedTotal /
+                        totalSets
+                    ) * 100
+                );
+
+
+            document.getElementById(
+                "overallProgress"
+            ).textContent =
+                percentage + "%";
+
+
+            document.getElementById(
+                "overallProgressFill"
+            ).style.width =
+                percentage + "%";
+
+        }
+
+
+        /* ==========================================
+           REST TIMER
+           ========================================== */
+
+        let timerInterval =
+            null;
+
+
+        let remainingSeconds =
+            0;
+
+
+        function startTimer(
+            seconds
+        ) {
+
+
+            clearInterval(
+                timerInterval
+            );
+
+
+            remainingSeconds =
+                seconds;
+
+
+            updateTimerDisplay();
+
+
+            document.getElementById(
+                "timerStatus"
+            ).textContent =
+                "Resting... Recover before your next set.";
+
+
+            timerInterval =
+                setInterval(
+                    () => {
+
+
+                        remainingSeconds--;
+
+
+                        updateTimerDisplay();
+
+
+                        if (
+                            remainingSeconds <= 0
+                        ) {
+
+                            clearInterval(
+                                timerInterval
+                            );
+
+
+                            document.getElementById(
+                                "timerStatus"
+                            ).textContent =
+                                "Rest complete! Get ready for your next set.";
+
+                        }
+
+                    },
+                    1000
+                );
+
+        }
+
+
+        function stopTimer() {
+
+            clearInterval(
+                timerInterval
+            );
+
+
+            remainingSeconds =
+                0;
+
+
+            updateTimerDisplay();
+
+
+            document.getElementById(
+                "timerStatus"
+            ).textContent =
+                "Timer stopped.";
+
+        }
+
+
+        function updateTimerDisplay() {
+
+
+            const minutes =
+                Math.floor(
+                    remainingSeconds /
+                    60
+                );
+
+
+            const seconds =
+                remainingSeconds %
+                60;
+
+
+            document.getElementById(
+                "timerDisplay"
+            ).textContent =
+
+                String(
+                    minutes
+                ).padStart(
+                    2,
+                    "0"
+                )
+
+                +
+
+                ":"
+
+                +
+
+                String(
+                    seconds
+                ).padStart(
+                    2,
+                    "0"
+                );
+
+        }
+
+
+        function parseRestSeconds(
+            rest
+        ) {
+
+
+            const seconds =
+                parseInt(
+                    rest
+                );
+
+
+            return (
+                Number.isFinite(
+                    seconds
+                )
+            )
+                ? seconds
+                : 60;
+
+        }
+
+
+        /* ==========================================
+           FINISH WORKOUT
+           ========================================== */
+
+        function finishWorkout() {
+
+    if (
+        completedTotal <
+        totalSets
+    ) {
+
+        const confirmFinish =
+            confirm(
+                "You have not completed all sets. Finish this workout anyway?"
+            );
+
+        if (!confirmFinish) {
+            return;
+        }
+
+    }
+
+
+    clearInterval(
+        timerInterval
+    );
+
+
+    /* ======================================
+       WORKOUT COUNT
+       ====================================== */
+
+    let workoutCount =
+        parseInt(
+            localStorage.getItem(
+                "fittrackWorkoutCount"
+            )
+        ) || 0;
+
+
+    workoutCount++;
+
+
+    localStorage.setItem(
+        "fittrackWorkoutCount",
+        workoutCount
+    );
+
+
+    /* ======================================
+       LAST WORKOUT
+       ====================================== */
+
+    localStorage.setItem(
+        "fittrackLastWorkout",
+        workoutName
+    );
+
+
+    /* ======================================
+       LOCAL DATE
+       ====================================== */
+
+    const now = new Date();
+
+    const year =
+        now.getFullYear();
+
+    const month =
+        String(
+            now.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    const day =
+        String(
+            now.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+
+    const todayString =
+        year +
+        "-" +
+        month +
+        "-" +
+        day;
+
+
+    /* ======================================
+       LAST WORKOUT DATE
+       ====================================== */
+
+    localStorage.setItem(
+        "fittrackLastWorkoutDate",
+        now.toLocaleDateString(
+            "en-IN"
+        )
+    );
+
+
+    /* ======================================
+       WORKOUT COMPLETION DATES
+       ====================================== */
+
+    let workoutDates = [];
+
+    try {
+
+        workoutDates =
+            JSON.parse(
+                localStorage.getItem(
+                    "fittrackWorkoutDates"
+                )
+            ) || [];
+
+    }
+
+    catch (error) {
+
+        workoutDates = [];
+
+    }
+
+
+    /*
+       Save today's LOCAL date.
+
+       Example:
+       2026-09-24
+
+       This matches the Progress calendar.
+    */
+
+    if (
+        workoutDates.indexOf(
+            todayString
+        ) === -1
+    ) {
+
+        workoutDates.push(
+            todayString
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "fittrackWorkoutDates",
+        JSON.stringify(
+            workoutDates
+        )
+    );
+
+
+    /* ======================================
+       WORKOUT HISTORY
+       ====================================== */
+
+    let workoutHistory = [];
+
+    try {
+
+        workoutHistory =
+            JSON.parse(
+                localStorage.getItem(
+                    "fittrackWorkoutHistory"
+                )
+            ) || [];
+
+    }
+
+    catch (error) {
+
+        workoutHistory = [];
+
+    }
+
+
+    workoutHistory.push({
+
+        name:
+            workoutName,
+
+        type:
+            workoutType,
+
+        level:
+            level,
+
+        date:
+            now.toLocaleDateString(
+                "en-IN"
+            )
+
+    });
+
+
+    localStorage.setItem(
+        "fittrackWorkoutHistory",
+        JSON.stringify(
+            workoutHistory
+        )
+    );
+
+
+    /* ======================================
+       FINISH
+       ====================================== */
+
+    alert(
+        "Workout completed! Great job! 🔥"
+    );
+
+
+    window.location.href =
+        "progress.html";
+
+}
+</script>
+</body>
+
+</html>

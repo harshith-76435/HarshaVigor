@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HarshaVigor | Password Recovery</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(255, 90, 31, 0.10),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(255, 90, 31, 0.06),
+                    transparent 28%
+                ),
+                #07090c;
+
+            color: #ffffff;
+        }
+
+
+        header {
+            min-height: 76px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 38px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(13, 16, 21, 0.96),
+                    rgba(8, 10, 14, 0.92)
+                );
+
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+
+            box-shadow:
+                0 12px 40px rgba(0,0,0,0.28);
+
+            backdrop-filter: blur(20px);
+        }
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .logo img {
+            width: 72px;
+            height: 58px;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+
+        .login-page {
+            min-height: calc(100vh - 76px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 55px 20px;
+        }
+
+
+        .login-card {
+            width: 100%;
+            max-width: 460px;
+
+            padding: 40px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(24, 29, 37, 0.96),
+                    rgba(12, 16, 21, 0.96)
+                );
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 22px;
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.48),
+                inset 0 1px 0 rgba(255,255,255,0.035);
+
+            backdrop-filter: blur(20px);
+        }
+
+
+        .login-heading {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .login-heading p {
+            margin: 0;
+
+            color: #ff5a1f;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 1.6px;
+        }
+
+
+        .login-heading h1 {
+            margin: 10px 0;
+
+            font-size: 30px;
+
+            letter-spacing: -0.7px;
+        }
+
+
+        .login-heading span {
+            color: #7f8994;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .login-form {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .login-form label {
+            color: #c8cdd3;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+
+        .login-form input {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-bottom: 20px;
+
+            background: #0f141a;
+
+            border: 1px solid #29313b;
+
+            border-radius: 10px;
+
+            color: #ffffff;
+
+            outline: none;
+
+            font-size: 14px;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .login-form input:focus {
+            border-color: #ff5a1f;
+
+            box-shadow:
+                0 0 0 3px rgba(255,90,31,0.08);
+        }
+
+
+        .login-form button {
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff6a2a,
+                    #ff4f18
+                );
+
+            color: #ffffff;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .login-form button:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 10px 28px rgba(255,90,31,0.20);
+        }
+
+
+        .login-form button:focus {
+            outline: none;
+
+            box-shadow:
+                0 0 0 3px rgba(255,90,31,0.18);
+        }
+
+
+        #recoveryMessage {
+            min-height: 20px;
+
+            margin: 18px 0 0;
+
+            text-align: center;
+
+            color: #ff7a3d;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            line-height: 1.5;
+        }
+
+
+        .back-login-button {
+            width: 100%;
+
+            margin-top: 12px;
+
+            padding: 12px 14px;
+
+            border: 1px solid #29313b;
+
+            border-radius: 10px;
+
+            background: transparent;
+
+            color: #a0a7af;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: all 0.25s ease;
+        }
+
+
+        .back-login-button:hover {
+            color: #ff5a1f;
+
+            border-color: #ff5a1f;
+
+            background: rgba(255,90,31,0.06);
+        }
+
+
+        @media screen and (max-width: 600px) {
+
+            header {
+                min-height: 68px;
+
+                padding: 0 16px;
+            }
+
+
+            .logo img {
+                width: 66px;
+                height: 54px;
+            }
+
+
+            .login-page {
+                padding: 30px 16px;
+            }
+
+
+            .login-card {
+                padding: 28px 22px;
+
+                border-radius: 18px;
+            }
+
+
+            .login-heading h1 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <div class="logo">
+
+            <img
+                src="harshavigor-logo.png"
+                alt="HarshaVigor"
+            >
+
+        </div>
+
+    </header>
+
+
+    <main class="login-page">
+
+        <div class="login-card">
+
+
+            <div class="login-heading">
+
+                <p>ACCOUNT RECOVERY</p>
+
+                <h1>Password Recovery</h1>
+
+                <span>
+                    Enter your username and mobile number
+                    to recover your account.
+                </span>
+
+            </div>
+
+
+            <div class="login-form">
+
+
+                <label for="recoveryUsername">
+                    Username
+                </label>
+
+
+                <input
+                    type="text"
+                    id="recoveryUsername"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                >
+
+
+                <label for="recoveryMobile">
+                    Mobile Number
+                </label>
+
+
+                <input
+                    type="tel"
+                    id="recoveryMobile"
+                    placeholder="Enter your mobile number"
+                    inputmode="numeric"
+                    maxlength="10"
+                    autocomplete="tel"
+                >
+
+
+                <button
+                    type="button"
+                    id="continueRecoveryButton"
+                >
+                    Continue →
+                </button>
+
+
+            </div>
+
+
+            <p id="recoveryMessage"></p>
+
+
+            <button
+                type="button"
+                id="backToLoginButton"
+                class="back-login-button"
+            >
+                ← Back to Login
+            </button>
+
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+
+        var recoveryUsername =
+            document.getElementById(
+                "recoveryUsername"
+            );
+
+
+        var recoveryMobile =
+            document.getElementById(
+                "recoveryMobile"
+            );
+
+
+        var continueRecoveryButton =
+            document.getElementById(
+                "continueRecoveryButton"
+            );
+
+
+        var recoveryMessage =
+            document.getElementById(
+                "recoveryMessage"
+            );
+
+
+        var savedUsername =
+            localStorage.getItem(
+                "fittrackAccountUsername"
+            ) ||
+            localStorage.getItem(
+                "fittrackUsername"
+            ) ||
+            "";
+
+
+        var savedMobile =
+            localStorage.getItem(
+                "fittrackAccountMobile"
+            ) ||
+            localStorage.getItem(
+                "fittrackMobile"
+            ) ||
+            "";
+
+
+        /* CONTINUE RECOVERY */
+
+        continueRecoveryButton.onclick =
+            function() {
+
+
+                var username =
+                    recoveryUsername.value.trim();
+
+
+                var mobile =
+                    recoveryMobile.value.trim();
+
+
+                if (
+                    username === "" ||
+                    mobile === ""
+                ) {
+
+                    recoveryMessage.style.color =
+                        "#ff7a3d";
+
+                    recoveryMessage.textContent =
+                        "Please enter your username and mobile number.";
+
+                    return;
+                }
+
+
+                if (
+                    !/^\d{10}$/.test(mobile)
+                ) {
+
+                    recoveryMessage.style.color =
+                        "#ff7a3d";
+
+                    recoveryMessage.textContent =
+                        "Please enter a valid 10-digit mobile number.";
+
+                    return;
+                }
+
+
+                if (
+                    savedUsername !== "" &&
+                    username !== savedUsername
+                ) {
+
+                    recoveryMessage.style.color =
+                        "#ff7a3d";
+
+                    recoveryMessage.textContent =
+                        "Username does not match the saved account.";
+
+                    return;
+                }
+
+
+                if (
+                    savedMobile !== "" &&
+                    mobile !== savedMobile
+                ) {
+
+                    recoveryMessage.style.color =
+                        "#ff7a3d";
+
+                    recoveryMessage.textContent =
+                        "Mobile number does not match the saved account.";
+
+                    return;
+                }
+
+
+                /*
+                    Store recovery verification
+                    for the next page.
+                */
+
+                sessionStorage.setItem(
+                    "fittrackRecoveryVerified",
+                    "true"
+                );
+
+
+                sessionStorage.setItem(
+                    "fittrackRecoveryUsername",
+                    username
+                );
+
+
+                recoveryMessage.style.color =
+                    "#4ade80";
+
+
+                recoveryMessage.textContent =
+                    "Account verified. Opening password setup...";
+
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "reset-password.html";
+
+                    },
+                    700
+                );
+
+
+            };
+
+
+        /* BACK TO LOGIN */
+
+        document.getElementById(
+            "backToLoginButton"
+        ).onclick =
+            function() {
+
+                window.location.href =
+                    "login.html";
+
+            };
+
+
+        /* AUTO FOCUS */
+
+        recoveryUsername.focus();
+
+
+    </script>
+
+
+</body>
+
+</html>
